@@ -1,0 +1,100 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "49848",
+      "name": "分类",
+      "font_class": "39",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "593484",
+      "name": "菜单",
+      "font_class": "weibiaoti12",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "608316",
+      "name": "箭头",
+      "font_class": "jiantouarrow482",
+      "unicode": "e694",
+      "unicode_decimal": 59028
+    },
+    {
+      "icon_id": "608361",
+      "name": "箭头",
+      "font_class": "jiantouarrow496",
+      "unicode": "e6b4",
+      "unicode_decimal": 59060
+    },
+    {
+      "icon_id": "785028",
+      "name": "客服",
+      "font_class": "kefu",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "866496",
+      "name": "购物车",
+      "font_class": "gouwuche",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "2155133",
+      "name": "爱心",
+      "font_class": "aixin",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "2681717",
+      "name": "五角星",
+      "font_class": "wujiaoxing",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "4266176",
+      "name": "时钟",
+      "font_class": "shizhong",
+      "unicode": "e71a",
+      "unicode_decimal": 59162
+    },
+    {
+      "icon_id": "5703269",
+      "name": "危险的闪电",
+      "font_class": "zhongguohangtiantubiaoheji-weizhuanlunkuo-",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "6548523",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "6997483",
+      "name": "我 的",
+      "font_class": "wodedangxuan",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "9402969",
+      "name": "点赞，大拇指",
+      "font_class": "changyongicon-",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    }
+  ]
+}
