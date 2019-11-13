@@ -9,6 +9,7 @@ Vue.use(MenuItem);
 Vue.use(Icon);
 Vue.use(Carousel);
 Vue.use(CarouselItem);
+
 // import axios from 'axios';
 
 import router from './routers'
@@ -17,6 +18,7 @@ Vue.config.productionTip = false
 // 使用ElementUI
 // Vue.use(ElementUI);
 // Vue.prototype.$axios = axios;
+
 
 new Vue({
     // 4.把router实例注入到vue实例中

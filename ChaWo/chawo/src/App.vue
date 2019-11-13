@@ -2,6 +2,7 @@
  <div class="block">
    <router-view/>
    <Footer/>
+
   </div>
 </template>
 
@@ -13,6 +14,7 @@ export default {
       Footer
    }
 };
+
 </script>
 
 <style>
