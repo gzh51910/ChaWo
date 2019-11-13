@@ -9,7 +9,7 @@ import Home from '../pages/Home.vue';
 import List from '../pages/List.vue';
 import Cart from '../pages/Cart.vue';
 import Mine from '../pages/Mine.vue';
-import NotFound from '../pages/NotFound.vue'
+import NotFound from '../pages/NotFound.vue';
 // 3. 实例化VueRouter并配置参数
 const router = new VueRouter({
     // mode:'history',//hash(默认)，history

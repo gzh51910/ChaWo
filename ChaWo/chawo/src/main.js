@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import './assets/rem';
+import './assets/rem'
 // 全部引入
 
-import { Menu, MenuItem, Icon, Carousel, CarouselItem } from 'element-ui';
+import { Menu, MenuItem, Icon, Carousel, CarouselItem } from 'element-ui'
 Vue.use(Menu);
 Vue.use(MenuItem);
 Vue.use(Icon);
