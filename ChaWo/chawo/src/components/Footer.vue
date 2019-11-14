@@ -1,16 +1,14 @@
 <template>
-    <div>
-        <el-menu
-            class="el-menu-dem"
-            mode="horizontal"
-            background-color="fff"
-            text-color="#000"
-            router
-            >
-                <el-menu-item v-for="(item) in menu" :index="item.path" :key="item.name" class="item-f"><i :class="item.icon"></i>{{item.text}}</el-menu-item>                
-            </el-menu>
-
-    </div>
+    <footer class="footer">
+       <a v-for="(item) in menu" :key="item.name" class="guide" @click="goto(item.path)">
+         <span>
+           <i :class="item.icon"></i>
+         </span>
+         <span>
+           {{item.text}}
+         </span>
+       </a>
+    </footer>
 </template>
 <script>
 export default {
@@ -43,31 +41,42 @@ export default {
         }
         ]
     }
-},
-// methods:{
-//     goto(path){
-//         this.$router.push(path)
-//     }
-// }
+  },
+  methods:{
+      goto(path){
+          this.$router.replace(path)
+      }
+  }
 }
 </script>
 <style>
-    .el-menu-dem{
-        border: 1px solid gray;
-        display: flex;
-        position:fixed;
-        left: 0;
-        width: 100%;
-        height: 60px;
-        /* justify-content: space-around; */
-        bottom: 0;
-
-    }
-    .item-f{
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center
-        
-    }
+    .footer {
+    border-top:1px soild #e4e4e4;
+    position:fixed;
+    z-index :100;
+    left :0;
+    right :0;
+    bottom:1px;
+    background-color:#fff;
+    width:100%;
+    height:60px;
+    display:flex;
+}
+.guide{
+    display:flex;
+    flex:1;
+    text-align :center;
+    flex-direction:column;
+    align-items :center;
+    margin:5px;
+    color:#999999;
+}  
+span{
+    font-size:12px;
+    margin-top:2px;
+    margin-bottom:2px;
+}
+/* .iconfont{
+    font-size:22px;
+} */
 </style>

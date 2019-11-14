@@ -1,48 +1,56 @@
 <template>
-    <div class="main">
-        <div class="banner">
-            <div class="logo"><img src="http://www.chawo.com/wap/images/chawo-logo.png" style="height: 18px;position: absolute;margin-top: 12px;padding-left: 10px; width: 47.38px !important; "></div>
-            <div class="header-wrap">
-                <a href="" class="header-inp" style="margin:6px 55px 0 55px"> <i class="el-icon-search"></i> <span class="search-input" id="keyword" placeholder="大益">大益</span> </a>
-                <i class="el-icon-plus" style="right:8px;top:8px; position:absolute; z-index:100"></i>
-            </div>
-            <el-carousel height="200px" arrow="never"  indicator-position="none">
-                <el-carousel-item v-for="item in image" :key="item.image">
-                    <img :src="item.image" alt="">
-                </el-carousel-item>
-            </el-carousel>
-        </div>
-        <div class="tablist">
-            <el-row class="tab">
-                <el-col  v-for="(item) in tab" :key="item.name" class="tabitem"><el-button type="primary" :icon="item.icon" circle></el-button><p style="margin-top:5px">{{item.name}}</p></el-col>
-            </el-row>
-        </div>
-        <div class="title">
-            <div class="toutiao" style="float:left;height:100%;padding:0 5px" >
-                <img src="../assets/toutiao.jpg" alt="" style="height:100%">
-            </div>
-            <!-- <ul style="float:left">
-                <li v-for="(item) in tab" :key="item.name" class="titleitem">{{item.name}}</li>
-            </ul> -->
-            <ul style="float:left;height:50px;width:50%">
-                  <el-carousel height="50px" direction="vertical"  :autoplay="true">
-                    <el-carousel-item v-for="(item) in tab" :key="item.name">
-                    <li>{{ item.name }}</li>
+    
+        <main class="main">
+            <div class="banner">
+                <div class="logo"><img src="http://www.chawo.com/wap/images/chawo-logo.png" style="height: 18px;position: absolute;margin-top: 12px;padding-left: 10px; width: 47.38px !important; "></div>
+                <div class="header-wrap">
+                    <a href="" class="header-inp" style="margin:6px 55px 0 55px"> <i class="el-icon-search"></i> <span class="search-input" id="keyword" placeholder="大益">大益</span> </a>
+                    <i class="el-icon-plus" style="right:3%;top:1.5%; position:absolute; z-index:100"></i>
+                </div>
+                <el-carousel height="200px" arrow="never"  indicator-position="none">
+                    <el-carousel-item v-for="item in image" :key="item.image">
+                        <img :src="item.image" alt="">
                     </el-carousel-item>
                 </el-carousel>
-            </ul>
-        </div>
-        <img src="//www.chawo.com/data/upload/mobile/special/s0/s0_06102178107647533.jpg" alt="" style="width:100%">
-        <div style="width:100%">
-            <img :src="title" alt="" style="width:100%">
-             <div style="width:100%">
-                 <img v-for="item in list" :key="item" :src="item.image" alt="" style="width:40%">
-             </div>
-        </div>
-    </div>
+            </div>
+            <div class="tablist">
+                <el-row class="tab">
+                    <el-col  v-for="(item) in tab" :key="item.name" class="tabitem"><el-button type="primary" :icon="item.icon" circle></el-button><p style="margin-top:5px">{{item.name}}</p></el-col>
+                </el-row>
+            </div>
+            <div class="title">
+                <div class="toutiao" style="float:left;height:100%;padding:0 5px" >
+                    <img src="../assets/toutiao.jpg" alt="" style="height:100%">
+                </div>
+                <!-- <ul style="float:left">
+                    <li v-for="(item) in tab" :key="item.name" class="titleitem">{{item.name}}</li>
+                </ul> -->
+                <ul style="float:left;height:50px;width:50%">
+                    <el-carousel height="50px" direction="vertical"  :autoplay="true">
+                        <el-carousel-item v-for="(item) in tab" :key="item.name">
+                        <li>{{ item.name }}</li>
+                        </el-carousel-item>
+                    </el-carousel>
+                </ul>
+            </div>
+            <img src="//www.chawo.com/data/upload/mobile/special/s0/s0_06102178107647533.jpg" alt="" style="width:100%">
+            <div style="width:100%">
+                <img :src="title" alt="" style="width:100%">
+                <div style="width:100%">
+                    <img v-for="item in list" :key="item.image" :src="item.image" alt="" style="width:40%">
+                </div>
+            </div>
+            <Footer/>
+        </main>
+         
 </template>
 <script>
+import Footer from '../components/Footer.vue';
 export default {
+    components:{
+       Footer 
+
+    },
     data(){
         return{
             image:[
@@ -130,9 +138,8 @@ export default {
                 "data": "https://mp.weixin.qq.com/mp/homepage?__biz=MzAwODA2OTExNQ==&hid=1&sn=1daf87589b64fc99d7da044bcc1670ac",
                 "order": "6"
             }
-        ]
-            
-        }
+        ]     
+      }
     }
     // created(){
     //      this.$axios.get('http://localhost:8010/miaosha',{
@@ -146,6 +153,15 @@ export default {
 
 </script>
 <style>
+ .content{
+     
+     overflow: hidden;
+  }
+  main{
+      height: 100%;
+      margin-bottom:60px;
+      overflow-y: scroll;
+  }
 .banner{
    width: 100%;
 }
@@ -159,7 +175,7 @@ export default {
      z-index: 100;
      color: grey;
      text-decoration: none;
-     width: 265px;
+     width:75%;
      font-size: 16px;
      height: 30px;
      line-height: 30px;
