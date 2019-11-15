@@ -10,7 +10,7 @@ const {
 } = require('../utils')
 
 //列表页查询数据接口--左侧列表数据
-Router.post('/find', async(req, res) => {
+Router.get('/find', async(req, res) => {
         let { page, size, sort } = req.query;
         let index = (page - 1) * size
             // mongodb查询数据库（1）

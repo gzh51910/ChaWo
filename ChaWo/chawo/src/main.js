@@ -6,8 +6,23 @@ import store from './store'
 import router from './routers';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Menu, MenuItem, Icon, Carousel, CarouselItem,Row,Col,Button,Form,
-    FormItem,Input,InputNumber,Radio,Checkbox} from 'element-ui';
+import {
+    Menu,
+    MenuItem,
+    Icon,
+    Carousel,
+    CarouselItem,
+    Row,
+    Col,
+    Button,
+    Form,
+    FormItem,
+    Input,
+    InputNumber,
+    Radio,
+    Checkbox,
+    pageHeader
+} from 'element-ui';
 Vue.use(Menu);
 Vue.use(MenuItem);
 Vue.use(Icon);
@@ -22,6 +37,7 @@ Vue.use(Input);
 Vue.use(FormItem);
 Vue.use(Form);
 Vue.use(Checkbox);
+Vue.use(pageHeader);
 // import axios from 'axios';
 
 
