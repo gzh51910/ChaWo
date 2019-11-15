@@ -4,8 +4,9 @@ let Router = express.Router();
 
 const { formatData } = require('../utils')
 
-let HomeRouter = require('./Home');
-let ListRouter = require('./List');
+let HomeRouter = require('./home');
+let ListRouter = require('./list');
+let GoodsRouter = require('./goods');
 
 // 跨域解决方案CORS
 Router.use((req, res, next) => {
@@ -31,8 +32,9 @@ Router.use((req, res, next) => {
 // 格式化请求体中的参数
 Router.use(express.json(), express.urlencoded({ extended: false }));
 
-Router.use('/Home', HomeRouter);
-Router.use('/List', ListRouter);
+Router.use('/home', HomeRouter);
+Router.use('/list', ListRouter);
+Router.use('/goods', GoodsRouter);
 Router.get('/verify', (req, res) => {
     // 获取请求头上的token
     let Authorization = req.get('Authorization');

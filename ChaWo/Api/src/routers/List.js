@@ -24,7 +24,7 @@ Router.get('/R', async(req, res) => {
 Router.get('/R1', async(req, res) => {
         let { size = 10 } = req.query;
         // mongodb查询数据库（1）
-        let data = await mongodb.Find('GoodsAll', {}, { limit: size });
+        let data = await mongodb.Find('列表右侧（中茶）', {}, { limit: size });
         res.send(formatData({ data }))
     })
     /*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
@@ -40,7 +40,7 @@ Router.get('/R2', async(req, res) => {
 Router.post('/', async(req, res) => {
         let { ImgMin, ImgMax, Title, price, Juan, Xl } = req.body;
 
-        let result = await mongodb.Create('测试', { ImgMin, ImgMax, Title, price, Juan, Xl })
+        let result = await mongodb.Create('列表右侧（中茶）', { ImgMin, ImgMax, Title, price, Juan, Xl })
 
         if (result.insertedCount > 0) {
             res.send(formatData());
@@ -53,7 +53,7 @@ Router.post('/', async(req, res) => {
 Router.delete('/:id', async(req, res) => {
         let { id } = req.params;
         // 查询数据库
-        let result = await mongodb.Remove('测试', { _id: id });
+        let result = await mongodb.Remove('列表右侧（中茶）', { _id: id });
 
         if (result.deletedCount > 0) {
             res.send(formatData())
@@ -67,7 +67,7 @@ Router.patch('/:id', async(req, res) => {
         let { id } = req.params;
         let { ImgMin, ImgMax, Title, price, Juan, Xl } = req.body;
         // 查询数据库
-        let result = await mongodb.Update('测试', { _id: id }, { ImgMin, ImgMax, Title, price, Juan, Xl });
+        let result = await mongodb.Update('列表右侧（中茶）', { _id: id }, { ImgMin, ImgMax, Title, price, Juan, Xl });
 
         if (result.modifiedCount > 0) {
             res.send(formatData())

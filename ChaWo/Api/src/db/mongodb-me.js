@@ -11,7 +11,7 @@ async function connect() {
 
 //查询相关的数据
 async function Find(colName, query = {}, options = {}) {
-    let { fields, limit } = options;
+    let { fields, skip, limit, sort } = options;
     let { db, client } = await connect();
 
     // 集合或文档操作
@@ -27,6 +27,21 @@ async function Find(colName, query = {}, options = {}) {
         // 限制数量
     if (limit) {
         result = result.limit(limit * 1)
+    }
+    // 跳过数量
+    if (skip) {
+        result = result.skip(skip)
+    }
+    if (sort) {
+
+        // 处理排序规则
+        let arr = sort.split(',');
+        let key = arr[0];
+        let value = arr[1] ? arr[1] * 1 : -1
+            // ES6写法：在对象的键中使用变量
+        result = result.sort({
+            [key]: value
+        })
     }
     result = result.toArray()
 
