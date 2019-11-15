@@ -65,7 +65,8 @@ Vue.component(Dialog.name, Dialog)
 Vue.config.productionTip = false
 
 import router from './routers';
-
+import axios from 'axios';
+Vue.prototype.$axios = axios;
 new Vue({
   router,//把路由注入实例
   render: h => h(App),
