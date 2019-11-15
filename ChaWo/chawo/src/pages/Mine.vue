@@ -1,0 +1,16 @@
+<template>
+    <div>
+        <header>
+            我的
+        </header>
+        <Footer/>
+    </div>
+</template>
+<script>
+import Footer from '../components/Footer.vue';
+export default {
+    components:{
+       Footer 
+    }
+}
+</script>
