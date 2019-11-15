@@ -24,7 +24,7 @@ Router.get('/R', async(req, res) => {
 Router.get('/R1', async(req, res) => {
         let { size = 10 } = req.query;
         // mongodb查询数据库（1）
-        let data = await mongodb.Find('列表右侧（中茶）', {}, { limit: size });
+        let data = await mongodb.Find('GoodsAll', {}, { limit: size });
         res.send(formatData({ data }))
     })
     /*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
