@@ -1,7 +1,9 @@
 <template>
-    <div style="width:100%">
-        <dl style="width:100%">
-			<dt v-for="(item) in dl" :key="item.gcid" @click="go(item.cid)" style="width:100%"><a><i :class="item.col"></i>{{item.text}}<i class="el-icon-arrow-right"></i></a></dt>
+    <div>
+        <dl>
+			<dt v-for="(item) in dl" :key="item.cid">
+                <p><i :class="item.col"></i>{{item.text}}<i class="el-icon-arrow-right"></i>
+                </p></dt>
         </dl>
     </div>
 </template>
@@ -40,13 +42,6 @@ export default {
               gcid:4,
               cid:45
            }]
-       }
-   },
-   methods:{
-       go(cid){
-           this.$router.replace('/list',{
-               parms:cid
-           })
        }
    }
 }

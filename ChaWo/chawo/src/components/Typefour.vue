@@ -1,7 +1,7 @@
 <template>
     <div style="width:100%">
         <dl style="width:100%">
-			<dt v-for="(item) in dl" :key="item.gcid" style="width:100%" @click="go(item.cid)"><a><i :class="item.col"></i>{{item.text}}<i class="el-icon-arrow-right"></i></a></dt>
+			<dt v-for="(item) in dl" :key="item.cid" style="width:100%" @click="go(item.cid)"><p><i :class="item.col"></i>{{item.text}}<i class="el-icon-arrow-right"></i></p></dt>
 	</dl>
 
     </div>
