@@ -20,7 +20,7 @@
         <el-col :span="13">
             <h4>{{item.name}}</h4>
             <p class="price">
-            <span class="price_span">￥{{item.price}}.00</span>
+            <span class="price_span" >￥{{item.price}}.00</span>
             <el-input-number class="i_n" size="mini" v-model="item.qty" @change="changeQtyAsync(item.id,$event)"></el-input-number>
             </p>
         </el-col>
@@ -28,17 +28,20 @@
             <el-button type="danger" icon="el-icon-delete" circle size="mini" @click="removeItem(item.id)"></el-button>
         </el-col>
         </el-row>
-        <el-divider></el-divider>
+        <!-- <el-divider></el-divider> -->
     </div>
-    <el-row :gutter="30">
+    <div class="footer">
+    <el-row :gutter="30" >
       <el-col :span="12">
-        <el-button type="danger" icon="el-icon-delete" size="mini" @click="clearCart">清空购物车</el-button>
+        <el-button style="margin-top:0.5rem;margin-left:10.5rem" type="danger"  size="mini" @click="clearCart">确认信息</el-button>
       </el-col>
-      <el-col :span="12" class="price" style="text-align:right">
-        总计：
-        <span>{{totalPrice.toFixed(2)}}</span>
+      <el-col :span="12" class="price" style="text-align:right; position: absolute;
+    top: 18px;left:-120px;z-index:999">
+        合计总金额：
+        <span style="color:red">￥{{totalPrice.toFixed(2)}}</span>
       </el-col>
     </el-row>
+  </div>
   </div>
 </template>
 <script>
@@ -97,7 +100,7 @@ margin-left: 0.5rem;
 }
 .price{
     padding: 0;
-    margin-top: -0.3rem;
+    margin-top: -0.1rem;
     margin-bottom: 0;
     width: 100%;
 }
@@ -148,5 +151,8 @@ margin-left: 0.5rem;
     left: 1.8rem;
     top: 2.5rem;
     z-index: 999;
+}
+.footer{
+  background:#eeeeee;
 }
 </style>
