@@ -5,7 +5,7 @@
                 <div class="logo"><img src="http://www.chawo.com/wap/images/chawo-logo.png" style="height: 18px;position: absolute;margin-top: 12px;padding-left: 10px; width: 47.38px !important; "></div>
                 <div class="header-wrap">
                     <a href="" class="header-inp" style="margin:6px 55px 0 55px"> <i class="el-icon-search"></i> <span class="search-input" id="keyword" placeholder="大益">大益</span> </a>
-                    <i class="el-icon-plus" style="right:3%;top:1.5%; position:absolute; z-index:100"></i>
+                    <i class="el-icon-more-outline" style="right:3%;top:1.5%; position:absolute; z-index:100"></i>
                 </div>
                 <el-carousel height="200px" arrow="never"  indicator-position="none">
                     <el-carousel-item v-for="item in image" :key="item.image">

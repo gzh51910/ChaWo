@@ -1,0 +1,74 @@
+<template>
+    <div style="width:100%">
+        <dl style="width:100%">
+			<dt v-for="(item) in dl" :key="item.gcid" style="width:100%" @click="go(item.cid)"><a><i :class="item.col"></i>{{item.text}}<i class="el-icon-arrow-right"></i></a></dt>
+	</dl>
+
+    </div>
+</template>
+<script>
+export default {
+    data(){
+       return {
+           dl:[{
+              col:"green",
+              text:"滇绿茶",
+              gcid:38,
+              cid:35
+           },{
+               col:"hotpink",
+              text:"雀舌(竹叶青)",
+              gcid:38,
+              cid:68
+           },{
+               col:"gray",
+              text:"茉莉花茶",
+              gcid:38,
+              cid:69
+           },{
+               col:"pink",
+              text:"碧螺春",
+              gcid:38,
+              cid:70
+           },{
+               col:"yellow",
+              text:"龙井",
+              gcid:38,
+              cid:71
+           },{
+               col:"red",
+              text:"黄山毛峰",
+              gcid:38,
+              cid:72
+           },{
+               col:"yellow",
+              text:"信阳毛尖",
+              gcid:38,
+              cid:73
+           },{
+               col:"red",
+              text:"太平猴魁",
+              gcid:38,
+              cid:75
+           },{
+               col:"yellow",
+              text:"六安瓜片",
+              gcid:38,
+              cid:76
+           },{
+               col:"red",
+              text:"其他绿茶",
+              gcid:38,
+              cid:74
+           }]
+       }
+   },
+   methods:{
+       go(cid){
+           this.$router.replace('/list',{
+               parms:cid
+           })
+       }
+   }
+}
+</script>

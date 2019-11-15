@@ -22,9 +22,9 @@ export default {
           icon: "el-icon-s-home"
         },
         {
-          name: "list",
-          path: "/list",
-          text: "列表",
+          name: "type",
+          path: "/type",
+          text: "分类",
           icon: "el-icon-menu"
         },
         {

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // 创建axios实例
 const my = axios.create({
-    baseURL: 'http://localhost:8010'
+    baseURL: 'http://10.3.136.103:8010'
 });
 
 function get(path,params,config={}){

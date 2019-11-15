@@ -6,7 +6,8 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Home from '../pages/Home.vue';
-import List from '../pages/List.vue';
+// import List from '../pages/List.vue';
+import Type from '../pages/Type.vue';
 import Cart from '../pages/Cart.vue';
 import Mine from '../pages/Mine.vue';
 import Login from '../pages/Login.vue';
@@ -22,10 +23,15 @@ const router = new VueRouter({
             path: '/home',
             component: Home
         },
+        // {
+        //     name: 'list',
+        //     path: '/list',
+        //     component: List
+        // },
         {
-            name: 'list',
-            path: '/list',
-            component: List
+            name: 'type',
+            path: '/type',
+            component: Type
         },
         // {
         //     name: 'goods',
