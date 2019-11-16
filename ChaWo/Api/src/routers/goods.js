@@ -30,8 +30,7 @@ Router.post('/add', async(req, res) => {
             Price,
             Juan,
             Xl,
-            brand_id,
-            nb
+            brand_id
         } = req.body;
 
         let result = await mongodb.Create('GoodsAll', {
@@ -43,8 +42,7 @@ Router.post('/add', async(req, res) => {
             Price,
             Juan,
             Xl,
-            brand_id,
-            nb
+            brand_id
         })
 
         if (result.insertedCount > 0) {
@@ -73,6 +71,20 @@ Router.delete('/del/:id', async(req, res) => {
             }))
         }
     })
+/* --------------------------------------------------------------------------------------------- */
+//列表页查询数据接口--左侧列表数据
+Router.get('/classify', async (req, res) => {
+     // mongodb查询数据库（1）
+     let data = await mongodb.Find('列表左侧', {});
+     res.send(formatData({
+         data
+     }))
+})
+
+
+
+/* --------------------------------------------------------------------------------------------- */
+    
     /*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
     //列表页修改商品数据接口--
 Router.patch('/update/:id', async(req, res) => {

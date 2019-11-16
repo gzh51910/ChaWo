@@ -31,6 +31,7 @@ import {
   CheckboxGroup,
   Upload,
   Dialog,
+  MessageBox
 } from 'element-ui';
 Vue.use(Row);
 Vue.use(Col);
@@ -62,6 +63,7 @@ Vue.component(TimePicker.name, TimePicker);
 Vue.component(CheckboxGroup.name, CheckboxGroup);
 Vue.component(Upload.name, Upload);
 Vue.component(Dialog.name, Dialog)
+Vue.component(MessageBox.name, MessageBox)
 Vue.config.productionTip = false
 
 import router from './routers';
