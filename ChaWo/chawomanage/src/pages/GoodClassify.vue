@@ -1,6 +1,7 @@
 <template>
-    <div style="padding:20px">
-        <el-button type="success" icon="el-icon-plus">添加</el-button>
+    <div style="padding:20px;width:500px">
+      <template>
+        <el-button type="success" icon="el-icon-plus" @click="addClassify">添加</el-button>
         <!-- <el-button type="danger" icon="el-icon-delete">删除</el-button> -->
           <el-table ref="multipleTable" :data="tableData"  tooltip-effect="dark"
             style="width: 100%"
@@ -15,13 +16,19 @@
             <el-table-column prop="gc_name" label="商品分类" width="120">
             </el-table-column>
             <el-table-column prop="address" label="操作" >
-              <el-button type="primary" icon="el-icon-edit" >修改</el-button>
-              <el-button type="danger" icon="el-icon-delete">删除</el-button>
+              <!-- <el-button type="primary" icon="el-icon-edit" >修改</el-button>
+              <el-button type="danger" icon="el-icon-delete" @click="removeClassify()">删除</el-button> -->
+
+               <template slot-scope="scope">
+                    <el-button type="primary" icon="el-icon-edit" size="mini"></el-button>
+                    <el-button type="danger" icon="el-icon-delete" size="mini" @click="removeClassify(scope.row._id)"></el-button>
+                </template>
             </el-table-column>
         </el-table>
         <div style="margin-top: 20px">
             <el-button @click="toggleSelection()">取消选择</el-button>
         </div>
+        </template>
     </div>
 </template>
 <script>
@@ -52,7 +59,15 @@ export default {
         let {data:{data}} =await this.$axios.get("http://localhost:8010/goods/classify");
         this.tableData=data
       },
-     
+      // 路由跳转
+     addClassify(){
+       this.$router.push('/addclassify')
+     },
+    //  删除
+     removeClassify(_id){
+       this.tableData=this.tableData.filter(item=>item._id!=_id)
+       this.$axios.delete("http://localhost:8010/goods/removeClassify/"+_id)
+     }
     },
      created(){
         this.getDataClassify()

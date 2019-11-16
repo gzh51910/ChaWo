@@ -105,14 +105,14 @@ export default {
          usermanagement:[{
           name: "userlist",
           path: "/userlist",
-          text: "用户列表",
+          text: "管理员列表",
           icon: "el-icon-menu"
         }
         ,
         {
           name: "addname",
           path: "/addname",
-          text: "添加用户",
+          text: "添加管理员",
           icon: "el-icon-menu"
         }]
         ,

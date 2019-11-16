@@ -4,6 +4,12 @@
             <el-form-item label="用户名" prop="name" >
                 <el-input v-model="ruleForm.name" style="width:200px"></el-input>
             </el-form-item>
+            <el-form-item label="性别" prop="sex" >
+                 <el-input  v-model="ruleForm.sex" autocomplete="off" style="width:200px"></el-input>
+            </el-form-item>
+              <el-form-item label="职位" prop="position" >
+                 <el-input  v-model="ruleForm.position" autocomplete="off" style="width:200px"></el-input>
+            </el-form-item>
             <el-form-item label="密码" prop="pass" >
                  <el-input type="password" v-model="ruleForm.pass" autocomplete="off" style="width:200px"></el-input>
             </el-form-item>
@@ -43,12 +49,14 @@ export default {
         ruleForm: {
           pass: '',
           checkPass: '',
-          name: ''
+          name: '',
+          sex:'',
+          position:''
         },
         rules: {
           pass: [{ validator: validatePass, trigger: 'blur' }],
           checkPass: [{ validator: validatePass2, trigger: 'blur'}],
-         name: [
+          name: [
                 { required: true, message: '请输入用户名', trigger: 'blur' },
                 { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
                 ],
@@ -59,7 +67,22 @@ export default {
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            // 验证成功
+            let name=this.ruleForm.name;
+            let password=this.ruleForm.checkPass;
+            let sex=this.ruleForm.sex
+            let position=this.ruleForm.position
+            this.$axios.post("http://localhost:8010/goods/adduser",{
+              name,password,sex,position
+            })
+            // 清空输入框
+            this.ruleForm.name="";
+            this.ruleForm.pass="";
+            this.ruleForm.checkPass="";
+            this.ruleForm.sex="";
+            this.ruleForm.position="";
+            alert('添加成功!');
+            
           } else {
             window.console.log('error submit!!');
             return false;
@@ -68,7 +91,8 @@ export default {
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
-      }
+      },
+
     }
   }
 

@@ -10,8 +10,10 @@ import GoodClassify from '../pages/GoodClassify.vue';
 import OrderList from '../pages/OrderList.vue';
 import UserList from '../pages/UserList.vue';
 import AddGood from '../pages/AddGood.vue';
-import AddName from '../pages/AddName.vue'
-
+import AddName from '../pages/AddName.vue';
+import GoodAmend from '../pages/GoodAmend.vue'
+import AddClassify from '../pages/AddClassify.vue'
+import UpdateUser from '../pages/UpdateUser.vue'
 // 3. 实例化VueRouter并配置参数
 const router = new VueRouter({
     // mode:'history', //hash(默认)   history
@@ -56,7 +58,21 @@ const router = new VueRouter({
             path: '/addname',
             component: AddName
         },
-        
+        {
+            name: 'goodamend',
+            path: '/goodamend',
+            component: GoodAmend
+        },
+         {
+             name: 'addclassify',
+             path: '/addclassify',
+             component: AddClassify
+         },
+        {
+            name: 'updateuser',
+            path: '/updateuser',
+            component: UpdateUser
+        },
         {
             // 重定向
             path: '/',

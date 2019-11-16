@@ -15,24 +15,7 @@
                 <el-option label="白茶" value="beijing"></el-option>
                 <el-option label="花草茶" value="shanghai"></el-option>
             </el-select>
-    
 
-
-                <!-- <el-dropdown split-button type="primary" 
-                trigger="click" placement="bottom" 
-                size="medium" style="margin:0 20px"
-                >
-                    请选择分类
-                    <el-dropdown-menu slot="dropdown" v-model="classify">
-                        <el-dropdown-item>普洱茶</el-dropdown-item>
-                        <el-dropdown-item>红茶</el-dropdown-item>
-                        <el-dropdown-item>绿茶</el-dropdown-item>
-                        <el-dropdown-item>乌龙茶</el-dropdown-item>
-                        <el-dropdown-item>黑茶</el-dropdown-item>
-                        <el-dropdown-item>白茶</el-dropdown-item>
-                        <el-dropdown-item>花草茶</el-dropdown-item>
-                    </el-dropdown-menu> 
-                </el-dropdown> -->
                 <el-button type="success" icon="el-icon-search">搜索</el-button>
             </div>
         </el-row>
@@ -72,7 +55,7 @@
             </el-table-column>
             <el-table-column  label="操作" >
                 <template slot-scope="scope">
-                    <el-button type="primary" icon="el-icon-edit" size="mini" ></el-button>
+                    <el-button type="primary" icon="el-icon-edit" size="mini" @click="updateItem(scope.row._id)"></el-button>
                     <el-button type="danger" icon="el-icon-delete" size="mini" @click="removeItem(scope.row._id)"></el-button>
                 </template>
                 
@@ -112,20 +95,19 @@ export default {
         //  发送请求获取数据
         async  getData(){
             let {data:{data}}= await this.$axios.get("http://localhost:8010/goods/find"+`?page=${this.page}+&size=${this.size}`);
-
             this.tableData=data;
-            //  let data= await this.$axios.get("http://localhost:8010/goods/find");
-            //  console.log(await this.$axios.get("http://localhost:8010/goods/find"));
-             
             },
             addItem(path){
                 this.$router.push(path);
             },
-         removeItem(id){
-             window.console.log(id)
-             this.tableData=this.tableData.filter(item=>item._id!=id);
-             this.$axios.delete("http://localhost:8010/goods/del/"+id)
-         },
+            updateItem(id){
+                this.$router.push({path:"/goodamend",query:{id:id}})
+            },
+            removeItem(id){
+                window.console.log(id)
+                this.tableData=this.tableData.filter(item=>item._id!=id);
+                this.$axios.delete("http://localhost:8010/goods/del/"+id)
+            },
             handleSizeChange(val) {
             window.console.log(`每页 ${val} 条`);
             },

@@ -14,12 +14,31 @@ Router.get('/find', async(req, res) => {
         let { page, size, sort } = req.query;
         let index = (page - 1) * size
             // mongodb查询数据库（1）
-        let data = await mongodb.Find('GoodsAll', {}, { skip: index, limit: size, sort });
+        let data = await mongodb.Find('GoodsAll', {}, {
+            skip: index,
+            limit: size,
+            sort
+        });
         res.send(formatData({
             data
         }))
-    })
-    //列表页增加商品数据接口--内容直接在响应体中获取
+})
+    
+//查询单个商品
+Router.get('/findsingle/:id', async (req, res) => {
+    let {
+        id
+    } = req.params;
+    // mongodb查询数据库（1）
+    let data = await mongodb.Find('GoodsAll', {_id:id});
+    res.send(formatData({
+        data
+    }))
+})
+
+
+
+//列表页增加商品数据接口--内容直接在响应体中获取
 Router.post('/add', async(req, res) => {
         let {
             dwd,
@@ -52,12 +71,42 @@ Router.post('/add', async(req, res) => {
                 status: 0
             }));
         }
-    })
-    //删除
+})
+
+// 分类添加数据接口
+Router.post('/addclassify', async (req, res) => {
+    let { gc_name, type_name } = req.body;
+    console.log(req.body);
+    
+    let result = await mongodb.Create('列表左侧', {gc_name,type_name})
+
+    if (result.insertedCount > 0) {
+        res.send(formatData());
+    } else {
+        res.send(formatData({
+            status: 0
+        }));
+    }
+})
+
+// 分类删除
+Router.delete('/removeClassify/:id', async (req, res) => {
+    let {id} = req.params;
+    let result = await mongodb.Remove('列表左侧', {_id:id})
+    if (result.insertedCount > 0) {
+        res.send(formatData());
+    } else {
+        res.send(formatData({
+            status: 0
+        }));
+    }
+})
+
+
+
+//列表页数据删除
 Router.delete('/del/:id', async(req, res) => {
-        let {
-            id
-        } = req.params;
+        let {id} = req.params;
         // 查询数据库
         let result = await mongodb.Remove('GoodsAll', {
             _id: id
@@ -70,7 +119,102 @@ Router.delete('/del/:id', async(req, res) => {
                 status: 0
             }))
         }
+})
+    
+
+// 管理员查询接口
+Router.get('/manager', async (req, res) => {
+    // mongodb查询数据库（1）
+    let data = await mongodb.Find('manager', {});
+    res.send(formatData({
+        data
+    }))
+})
+
+// 添加管理员
+Router.post('/adduser', async (req, res) => {
+    let {
+        name,
+        password,
+        sex,
+        position
+    } = req.body;
+
+    let result = await mongodb.Create('manager', {
+        name,
+        password,
+        sex,
+        position
     })
+    if (result.insertedCount > 0) {
+        res.send(formatData());
+    } else {
+        res.send(formatData({
+            status: 0
+        }));
+    }
+})
+// 删除管理员
+Router.delete('/removeuser/:id', async (req, res) => {
+    let {id} = req.params;
+    // 查询数据库
+    let result = await mongodb.Remove('manager', { _id: id});
+    if (result.deletedCount > 0) {
+        res.send(formatData())
+    } else {
+        res.send(formatData({
+            status: 0
+        }))
+    }
+})
+
+// 修改管理员信息
+Router.patch('/updateuser/:id', async (req, res) => {
+    let { id } = req.params;
+    console.log(id);
+    
+    // 差个数据接口
+    // let {
+    //     dwd,
+    //     gc_name,
+    //     brad_name,
+    //     ImgMin,
+    //     Title,
+    //     Price,
+    //     Juan,
+    //     Xl,
+    //     brand_id,
+    //     nb
+    // } = req.body;
+    // let result = await mongodb.Update('GoodsAll', {
+    //     _id: id
+    // }, {
+    //     dwd,
+    //     gc_name,
+    //     brad_name,
+    //     ImgMin,
+    //     Title,
+    //     Price,
+    //     Juan,
+    //     Xl,
+    //     brand_id,
+    //     nb
+    // });
+
+    // if (result.modifiedCount > 0) {
+    //     res.send(formatData())
+    // } else {
+    //     res.send(formatData({
+    //         status: 0
+    //     }))
+    // }
+})
+
+
+
+
+
+
 /* --------------------------------------------------------------------------------------------- */
 //列表页查询数据接口--左侧列表数据
 Router.get('/classify', async (req, res) => {
@@ -86,7 +230,7 @@ Router.get('/classify', async (req, res) => {
 /* --------------------------------------------------------------------------------------------- */
     
     /*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
-    //列表页修改商品数据接口--
+//列表页修改商品数据接口--
 Router.patch('/update/:id', async(req, res) => {
     let {
         id
@@ -100,7 +244,7 @@ Router.patch('/update/:id', async(req, res) => {
         Price,
         Juan,
         Xl,
-        brand_id,
+        brand_id, 
         nb
     } = req.body;
     let result = await mongodb.Update('GoodsAll', {
