@@ -21,8 +21,26 @@ import {
     InputNumber,
     Radio,
     Checkbox,
-    pageHeader
+    pageHeader,
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
+    Divider,
+    Badge,
+    Breadcrumb,
+    BreadcrumbItem,
+    Rate,
+    Avatar
 } from 'element-ui';
+Vue.use(Badge);
+Vue.use(Avatar),
+    Vue.use(Rate);
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem);
+Vue.use(Divider);
+Vue.use(Dropdown);
+Vue.use(DropdownItem);
+Vue.use(DropdownMenu);
 Vue.use(Menu);
 Vue.use(MenuItem);
 Vue.use(Icon);

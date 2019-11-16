@@ -6,12 +6,13 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Home from '../pages/Home.vue';
-// import List from '../pages/List.vue';
+import List from '../pages/List.vue';
 import Type from '../pages/Type.vue';
 import Cart from '../pages/Cart.vue';
 import Mine from '../pages/Mine.vue';
 import Login from '../pages/Login.vue';
 import Reg from '../pages/Reg.vue';
+import Gooddetail from '../pages/gooddetali.vue';
 import NotFound from '../pages/NotFound.vue';
 
 // 3. 实例化VueRouter并配置参数
@@ -23,21 +24,21 @@ const router = new VueRouter({
             path: '/home',
             component: Home
         },
-        // {
-        //     name: 'list',
-        //     path: '/list',
-        //     component: List
-        // },
+        {
+            name: 'list',
+            path: '/list',
+            component: List
+        },
         {
             name: 'type',
             path: '/type',
             component: Type
         },
-        // {
-        //     name: 'goods',
-        //     path: '/goods/:id',
-        //     component: Goods,
-        // },
+        {
+            name: 'detail',
+            path: '/detail',
+            component: Gooddetail,
+        },
         {
             path: '/',
             redirect: '/home',
