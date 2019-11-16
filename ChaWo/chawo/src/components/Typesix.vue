@@ -1,7 +1,7 @@
 <template>
     <div style="width:100%">
         <dl style="width:100%">
-			<dt v-for="(item) in dl" :key="item.cid" @click="go(item.cid)" style="width:100%"><p><i :class="item.col"></i>{{item.text}}<i class="el-icon-arrow-right"></i></p></dt>
+			<dt v-for="(item) in dl" :key="item.cid" @click="go()" style="width:100%"><p><i :class="item.col"></i>{{item.text}}<i class="el-icon-arrow-right"></i></p></dt>
         </dl>
     </div>
 </template>
@@ -9,6 +9,7 @@
 export default {
    data(){
        return {
+           name:"滇红茶",
            dl:[{
               col:"green",
               text:"滇红茶",
@@ -44,9 +45,7 @@ export default {
    },
    methods:{
        go(cid){
-           this.$router.replace('/list',{
-               parms:cid
-           })
+           this.$router.replace({path:'/list',query:{name:this.name}})
        }
    }
 }

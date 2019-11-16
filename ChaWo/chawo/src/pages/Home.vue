@@ -1,48 +1,80 @@
 <template>
-    
-        <main class="main">
-            <div class="banner">
-                <div class="logo"><img src="http://www.chawo.com/wap/images/chawo-logo.png" style="height: 18px;position: absolute;margin-top: 12px;padding-left: 10px; width: 47.38px !important; "></div>
-                <div class="header-wrap">
-                    <a href="" class="header-inp" style="margin:6px 55px 0 55px"> <i class="el-icon-search"></i> <span class="search-input" id="keyword" placeholder="大益">大益</span> </a>
-                    <i class="el-icon-more-outline" style="right:3%;top:1.5%; position:absolute; z-index:100" @click="go('/login')"></i>
-                </div>
-                <el-carousel height="200px" arrow="never"  indicator-position="none">
-                    <el-carousel-item v-for="item in image" :key="item.image">
-                        <img :src="item.image" alt="" style="margin-top:0">
+    <div class="main">
+        <div class="banner">
+            <div class="logo"><img src="http://www.chawo.com/wap/images/chawo-logo.png" style="height: 18px;position: absolute;margin-top: 12px;padding-left: 10px; width: 47.38px !important; "></div>
+            <div class="header-wrap">
+                <a href="" class="header-inp" style="margin:6px 55px 0 55px"> <i class="el-icon-search"></i> <span class="search-input" id="keyword" placeholder="大益">大益</span> </a>
+                <i class="el-icon-plus" style="right:8px;top:8px; position:absolute; z-index:100"></i>
+            </div>
+            <el-carousel height="200px" arrow="never"  indicator-position="none">
+                <el-carousel-item v-for="item in image" :key="item.image">
+                    <img :src="item.image" alt="">
+                </el-carousel-item>
+            </el-carousel>
+        </div>
+        <div class="tablist">
+            <el-row class="tab">
+                <el-col  v-for="(item) in tab" :key="item.name" class="tabitem"><el-button :type="item.type" :icon="item.icon" circle></el-button><p style="margin-top:5px">{{item.name}}</p></el-col>
+            </el-row>
+        </div>
+        <div class="title">
+            <div class="toutiao" style="float:left;height:100%;padding:0 5px" >
+                <img src="../assets/toutiao.jpg" alt="" style="height:100%">
+            </div>
+            <!-- <ul style="float:left">
+                <li v-for="(item) in tab" :key="item.name" class="titleitem">{{item.name}}</li>
+            </ul> -->
+            <ul style="float:left;height:50px;width:50%">
+                  <el-carousel height="50px" direction="vertical"  :autoplay="true">
+                    <el-carousel-item v-for="(item) in tab" :key="item.name">
+                    <li>{{ item.name }}</li>
                     </el-carousel-item>
                 </el-carousel>
-            </div>
-            <div class="tablist">
-                <el-row class="tab">
-                    <el-col  v-for="(item) in tab" :key="item.name" class="tabitem"><el-button type="primary" :icon="item.icon" circle></el-button><p style="margin-top:5px">{{item.name}}</p></el-col>
-                </el-row>
-            </div>
-            <div class="title">
-                <div class="toutiao" style="float:left;height:100%;padding:0 5px" >
-                    <img src="../assets/toutiao.jpg" alt="" style="height:100%">
-                </div>
-                <!-- <ul style="float:left">
-                    <li v-for="(item) in tab" :key="item.name" class="titleitem">{{item.name}}</li>
-                </ul> -->
-                <ul style="float:left;height:50px;width:50%">
-                    <el-carousel height="50px" direction="vertical"  :autoplay="true">
-                        <el-carousel-item v-for="(item) in tab" :key="item.name">
-                        <li>{{ item.name }}</li>
-                        </el-carousel-item>
-                    </el-carousel>
+            </ul>
+        </div>
+        <img src="//www.chawo.com/data/upload/mobile/special/s0/s0_06102178107647533.jpg" alt="" style="width:100%">
+        <div style="width:100%;height:185px;">
+            <img :src="title" alt="" style="width:100%">
+             <div style="width:100%">
+                 <img v-for="item in list" :key="item" :src="item.image" alt="" style="width:50%">
+             </div>
+        </div>
+        
+        <div class="list-1" v-for="item in t" :key="item" >
+                 <img :src="item.title1" alt="" style="width:100%;">
+                 <ul style="width:100%;height:100%">
+                     <li v-for="item in item.item1" :key="item" style="width:50%;height:250px;float:left;text-align:center; position: relative;background:#fff;">
+                         <img :src="item.goods_image" alt="" style="width:150px;height:150px;margin-left:3.5%;">
+                         <p style="font-size:12px;text-align:left;">{{item.goods_name}}</p>
+                        <div class="list-bottom">￥{{item.goods_promotion_price}}</div>
+                     </li>
+                 </ul>
+        </div>
+
+
+        <div>
+            
+            <a>
+               <img src="http://www.chawo.com/data/upload/mobile/special/s0/s0_06227404716647644.jpg" alt="" width="374px"> 
+            </a>
+            <div class="foot">
+                <span>个人中心</span>
+                <el-divider direction="vertical"></el-divider>
+                <span>注销</span>
+                <el-divider direction="vertical"></el-divider>
+                <span>反馈</span>
+                <el-divider direction="vertical"></el-divider>
+                <span>返回顶部</span>
+                <hr>
+                <ul style="margin-top:10px;float:left" class="diansan" >
+                    <li style="margin-left:100px;float:left"><el-button icon="el-icon-mobile-phone" circle></el-button></li>
+                    <li style="margin-left:60px;float:left"><el-button icon="el-icon-s-platform" circle></el-button></li>
                 </ul>
             </div>
-            <img src="//www.chawo.com/data/upload/mobile/special/s0/s0_06102178107647533.jpg" alt="" style="width:100%">
-            <div style="width:100%">
-                <img :src="title" alt="" style="width:100%">
-                <div style="width:100%">
-                    <img v-for="item in list" :key="item.image" :src="item.image" alt="" style="width:50%">
-                </div>
-            </div>
-            <Footer/>
-        </main>
-         
+        </div>
+        <Footer/>
+    </div>
+    
 </template>
 <script>
 import Footer from '../components/Footer.vue';
@@ -64,45 +96,56 @@ export default {
             { "image": "//www.chawo.com/data/upload/mobile/special/s0/s0_06107313877454629.jpg" },
             { "image": "//www.chawo.com/data/upload/mobile/special/s0/s0_06136780201780141.jpg" } 
             ],
-            tab:[{
+            tab:[
+            {
                 "name": "产品分类",
-                "icon": "el-icon-edit"
+                "icon": "el-icon-s-unfold",
+                "type":"danger"
             },
             {
                 "name": "近期新品",
-                "icon": "el-icon-edit"
+                "icon": "el-icon-upload2",
+                "type":"success"
             },
             {
                 "name": "限时折扣",
-                "icon": "el-icon-edit"
+                "icon": "el-icon-time",
+                "type":"primary"
             },
             {
                 "name": "茶窝秒杀",
-                "icon": "el-icon-edit"
+                "icon": "el-icon-timer",
+                "type":"info"
             },
             {
                 "name": "茶窝优选",
-                "icon": "el-icon-edit"
+                "icon": "el-icon-thumb",
+                "type":"success"
             },
             {
                 "name": "优惠套餐",
-                "icon": "el-icon-edit"
+                "icon": "el-icon-menu",
+                "type":"primary"
             },
             {
                 "name": "中老期茶",
-                "icon": "el-icon-edit"
+                "icon": "el-icon-star-on",
+                "type":"warning"
             },
             {
                 "name": "春茶上市",
-                "icon": "el-icon-edit"
+                "icon": "el-icon-shopping-cart-2",
+                "type":"success"
             },
             {
                 "name": "积分兑换",
-                "icon": "el-icon-edit"
+                "icon": "el-icon-coin",
+                "type":"primary"
             },
             {
                 "name": "签到有礼",
-                "icon": "el-icon-edit"
+                "icon": "el-icon-s-custom",
+                "type":"danger"
             }
         ],
         title: "//www.chawo.com/data/upload/mobile/special/s0/s0_06111652008392456.png",
@@ -138,14 +181,149 @@ export default {
                 "data": "https://mp.weixin.qq.com/mp/homepage?__biz=MzAwODA2OTExNQ==&hid=1&sn=1daf87589b64fc99d7da044bcc1670ac",
                 "order": "6"
             }
-        ]     
-      }
-    },
-    methods:{
-        go(path){
-            this.$router.push(path)
+        ],
+  t:[ {  
+         title1 : "//www.chawo.com/data/upload/mobile/special/s0/s0_06111655294608459.png",
+      item1 : [ 
+        {
+            "goods_id" : "106149",
+            "goods_name" : "【青铜宝盒】2018年八角亭 黎明普洱 生茶 357克/饼 单片",
+            "goods_promotion_price" : "128.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2018/08/2_05880016410867726_360.jpg",
+            "order" : "1"
+        }, 
+        {
+            "goods_id" : "107328",
+            "goods_name" : "2019年大雪山大树纯料茶 生茶 357克/饼 单片",
+            "goods_promotion_price" : "88.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2019/05/2_06120226700157383_360.jpg",
+            "order" : "2"
+        }, 
+        {
+            "goods_id" : "100490",
+            "goods_name" : "2013年下关 飞台金瓜贡茶 生茶 100克 1盒",
+            "goods_promotion_price" : "23.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2014/12/2_04717831988895027_360.jpg",
+            "order" : "3"
+        }, 
+        {
+            "goods_id" : "104448",
+            "goods_name" : "2017年七彩云南 老茶头 熟茶 250克/砖 1盒",
+            "goods_promotion_price" : "79.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2017/11/2_05635585070453837_360.jpg",
+            "order" : "4"
+        }, 
+        {
+            "goods_id" : "108155",
+            "goods_name" : "2019年下关 南诏御沱（班章五寨） 沱茶 生茶 500克/条",
+            "goods_promotion_price" : "388.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2019/07/2_06172134727413462_360.jpg",
+            "order" : "5"
+        }, 
+        {
+            "goods_id" : "104272",
+            "goods_name" : "2017年郎河 勐海味 熟茶 357克/饼 单片",
+            "goods_promotion_price" : "32.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2017/09/2_05600194063515789_360.jpg",
+            "order" : "6"
         }
-    }
+    ]},
+   { 
+         title1 : "//www.chawo.com/data/upload/mobile/special/s0/s0_06111671460151599.png",
+       item1 : [ 
+        {
+            "goods_id" : "108322",
+            "goods_name" : "2019年大益 8582 生茶 357克/饼 单片",
+            "goods_promotion_price" : "115.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2019/08/2_06203915503995437_360.jpg",
+            "order" : ""
+        }, 
+        {
+            "goods_id" : "108296",
+            "goods_name" : "2019年古德凤凰(南涧茶厂) 凤凰特沱 生茶 100克/沱 1沱",
+            "goods_promotion_price" : "1.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2019/08/2_06203083714355783_360.jpg",
+            "order" : ""
+        }, 
+        {
+            "goods_id" : "107788",
+            "goods_name" : "2019年老同志 深山老树 20周年纪念饼 生茶 500克/饼 单片",
+            "goods_promotion_price" : "210.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2019/07/2_06154668771423357_360.jpg",
+            "order" : ""
+        }, 
+        {
+            "goods_id" : "107701",
+            "goods_name" : "2019年八角亭 易武麻黑寨 老树纯料 生茶 357克/饼",
+            "goods_promotion_price" : "1280.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2019/06/2_06139115802217120_360.jpg",
+            "order" : ""
+        }, 
+        {
+            "goods_id" : "103325",
+            "goods_name" : "2014年下关 绿盒甲 沱茶 生茶 100克/沱 1沱",
+            "goods_promotion_price" : "18.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2019/08/2_06184252584747501_360.jpg",
+            "order" : "1"
+        }, 
+        {
+            "goods_id" : "106513",
+            "goods_name" : "【青铜宝盒】2018年中茶 经典传承九二方砖（92方砖） 生茶 方格茶 125克/砖",
+            "goods_promotion_price" : "148.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2018/11/2_05949343576602747_360.jpg",
+            "order" : "2"
+        }
+    ]},{
+           title1 : "//www.chawo.com/data/upload/mobile/special/s0/s0_06111670541537206.png",
+        item1 : [ 
+        {
+            "goods_id" : "107757",
+            "goods_name" : "【青铜宝盒】2018年八角亭 黎明普洱 熟茶 357克/饼 单片",
+            "goods_promotion_price" : "128.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2019/07/2_06153129599191737_360.jpg",
+            "order" : ""
+        }, 
+        {
+            "goods_id" : "107737",
+            "goods_name" : "2019年郎河 越陈越香. 熟茶 357克/饼",
+            "goods_promotion_price" : "88.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2019/08/2_06190272629215641_360.jpg",
+            "order" : ""
+        }, 
+        {
+            "goods_id" : "107794",
+            "goods_name" : "【青铜宝盒】2018年老同志 181批醇香饼茶 熟茶 357克/饼",
+            "goods_promotion_price" : "95.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2019/07/2_06161771040468978_360.jpg",
+            "order" : ""
+        }, 
+        {
+            "goods_id" : "108276",
+            "goods_name" : "2019年下关 销法沱 盒装沱茶 熟茶 100克/盒",
+            "goods_promotion_price" : "13.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2019/08/2_06198945964219459_360.jpg",
+            "order" : ""
+        }, 
+        {
+            "goods_id" : "108222",
+            "goods_name" : "2019年大益 8592 1901批 熟茶 357克/饼 单片",
+            "goods_promotion_price" : "98.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2019/08/2_06183292972661573_360.jpg",
+            "order" : ""
+        }, 
+        {
+            "goods_id" : "107071",
+            "goods_name" : "2018年中茶 7581简装 熟茶 250克/砖",
+            "goods_promotion_price" : "88.00",
+            "goods_image" : "//www.chawo.com/data/upload/shop/store/goods/2/2019/03/2_06063234976625824_360.jpg",
+            "order" : ""
+        }
+    ]
+    },
+    ]
+        }
+
+    },
     // created(){
     //      this.$axios.get('http://localhost:8010/miaosha',{
 
@@ -217,4 +395,25 @@ export default {
   .el-carousel__item:nth-child(2n+1) {
      background-color: #d3dce6;
   } */
+.list-1{
+background:#eee;
+width:100%;
+margin-top: 25px;
+overflow: hidden;
+z-index: -999;
+}
+.list-bottom{
+    width: 100%;
+    height: 20px;
+    /* background: deepskyblue; */
+    position: absolute;
+    bottom:10px;
+    color: red;
+    text-align: left;
+    padding-left: 10px;
+   
+}
+.foot span{
+    margin: 0 15px;
+}
 </style>

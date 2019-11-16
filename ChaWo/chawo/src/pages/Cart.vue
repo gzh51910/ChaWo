@@ -1,7 +1,7 @@
 <template>
   <div class="page-cart">
       <div>
-      <el-page-header content="购物车" title="返回" style="height: 2.0rem;padding:0.6rem 0;">
+      <el-page-header content="购物车" title="返回" style="height: 2.0rem;padding:0.6rem 0;" @click.native="go('/home')">
        </el-page-header>
           <i class="el-icon-more"></i>
       </div>
@@ -60,6 +60,9 @@ export default {
   },
   
   methods:{
+    go(path){
+        this.$router.replace(path)
+    },
     ...mapMutations({
       removeItem:'removeFromCart',
       changeQty2:(commit,payload)=>{
