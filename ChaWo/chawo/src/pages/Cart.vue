@@ -6,13 +6,13 @@
           <i class="el-icon-more"></i>
       </div>
       <div class="checkAll">
-           <el-checkbox :indeterminate="isIndeterminate" v-model="selectAll" @change="handleCheckAllChange">茶窝网</el-checkbox>
+           <el-checkbox v-model="selectAll" >茶窝网</el-checkbox>
            <i class="el-icon-hot-water"></i>
       </div>
-    <div  v-for="item in goodslist" :key="item.id">
-        <el-row :gutter="30" class="row" >
-        <el-col :span="3">
-            <el-checkbox v-model="checked" class="c_b"></el-checkbox>
+    <div  v-for="item in goodslist" :key="item.id" >
+        <el-row :gutter="30" class="row">
+        <el-col :span="3" >
+            <el-checkbox  class="c_b" v-model="item.checked" ></el-checkbox>
         </el-col>
          <el-col :span="5">
             <img :src="item.imgurl" />
@@ -21,14 +21,13 @@
             <h4>{{item.name}}</h4>
             <p class="price">
             <span class="price_span" >￥{{item.price}}.00</span>
-            <el-input-number class="i_n" size="mini" v-model="item.qty" @change="changeQtyAsync(item.id,$event)"></el-input-number>
+            <el-input-number class="i_n" size="mini" v-model="item.qty" ></el-input-number>
             </p>
         </el-col>
         <el-col :span="3" style="text-align:right; margin-top:0.5rem">
-            <el-button type="danger" icon="el-icon-delete" circle size="mini" @click="removeItem(item.id)"></el-button>
+            <el-button type="danger" icon="el-icon-delete" circle size="mini" @click.stop="removeItem(item.id)"></el-button>
         </el-col>
         </el-row>
-        <!-- <el-divider></el-divider> -->
     </div>
     <div class="footer">
     <el-row :gutter="30" >
@@ -45,12 +44,11 @@
   </div>
 </template>
 <script>
-import {mapState,mapGetters,mapMutations, mapActions} from 'vuex'
-import {my} from '../api'
+import {mapState,mapGetters,mapMutations} from 'vuex'
+// import {my} from '../api'
 export default {
   data() {
     return {
-      checked: true,
     };
   },
   computed:{
@@ -59,7 +57,19 @@ export default {
         return state.cart.goodslist
       }
     }),
-    ...mapGetters(['totalPrice'])
+    ...mapGetters(['totalPrice']),
+      selectAll:{
+            get(){
+                return this.goodslist.every(item=>item.checked)
+            },
+            set(val){
+                this.goodslist.forEach(item=>{
+                    item.checked = val
+                })
+
+
+            }
+        }
   },
   
   methods:{
@@ -71,12 +81,6 @@ export default {
       }
     }),
     ...mapMutations(['clearCart','changeQty']),
-    ...mapActions({
-      changeQtyAsync(dispatch,id,qty){
-        console.log(dispatch,id,qty)
-        dispatch('changeQtyAsync',{id,qty})
-      }
-    })
   }
 };
 </script>
