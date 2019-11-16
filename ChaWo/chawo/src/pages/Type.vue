@@ -2,10 +2,10 @@
     <div>
         <header style="background-color:#eee;padding:0 10px;height: 40px;position:fixed;top:0;left:0;width:100%;z-index:100">
             <div>
-                <i class="el-icon-arrow-left" style="margin:3% 0 0 4%" @click="go('/home')"></i>
+                <i class="el-icon-arrow-left" style="margin:3% 0 0 4%" @click="goto('/home')"></i>
                 <img src="http://www.chawo.com/wap/images/chawo-logo.png" style="height: 18px;margin-top: 2%;padding-left: 5px; width: 47.38px !important; ">
                 <a class="hinp"> <i class="el-icon-search"></i> <span class="search-input" id="keyword" placeholder="大益">大益</span> </a>
-                <i class="el-icon-more" style="right:4%;top:1.5%; position:absolute"></i>
+                <i class="el-icon-more" style="right:4%;top:20%; position:absolute"></i>
             </div>
         </header>
         <main style="margin-top:35px;height:100%">
@@ -25,10 +25,10 @@
                     </span>
                 </a>
             </aside>
-             <section class="container" style="width:75%;float:right;padding-top:20px">
+             <section class="container" style="width:75%;float:right;padding-top:10px">
                    <div style="width:100%" v-if="active==0">
-                        <dl style="width:100%">
-                            <dd v-for="(item) in tuijian" :key="item.brand_id" style="width:30%;float:left;margin:1.5%">
+                        <dl style="width:100%;margin:0 " > 
+                            <dd v-for="(item,id) in tuijian" :key="item.brand_id" style="width:30%;float:left;margin:1.5%" @click="gotolist(id)">
                                 <a>
                                     <img :src="item.brand_pic">
                                     <p>{{item.brand_name}}</p>
@@ -125,10 +125,26 @@ export default {
       }
     },
     methods:{
+        goto(path){
+            this.$router.push(path);
+        },
         go(id){
             this.active=id;
-            console.log(this.active);
+            if(this.active==1){
+                this.$router.push({path:'/list',query:{name:'普洱茶'}});
+            }else if(this.active==6){
+                this.$router.push({path:'/list',query:{name:'白茶'}});
+            }
+        },
+        gotolist(id){
+            this.active=id;
+            if(this.active==1){
+                this.$router.push({path:'/list',query:{name:'大益',limit:90}});
+            }else{
+                this.$router.push({path:'/list',query:{name:'中茶',limit:90}});
+            }
         }
+
     },
     async created(){
         let {data}=await my.get('/List/R');

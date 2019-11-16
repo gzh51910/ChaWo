@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="Lway" style="margin:20px 0">
+      <i class="el-icon-s-home" style="float:left;margin:6 10px" @click="goto('/home')"></i>
         <el-button plain icon="el-icon-mobile" style="margin-right:20%;border:0">手机登录</el-button>
         <el-button plain icon="el-icon-user" style="border:0">普通登录</el-button>
     </div>
@@ -63,20 +64,14 @@ export default {
           this.$refs.loginForm.validate(async (valid) => {
             if (valid) {
                 // 校验成功发起ajax请求
-                console.log('success');
+                // console.log('success');
 
                 let {phone,password} = this.loginForm;
-                // let result = await this.$axios.get('http://localhost:1910/login',{
-                //     params:{
-                //         username,
-                //         password
-                //     }
-                // });
                 let result = await my.get('/login',{
                   phone,
                   password
                 });
-                console.log('result:',result);
+                // console.log('result:',result);
                 let {data,headers} = result;
                 if(data.status === 0){
                     // console.log('不行')

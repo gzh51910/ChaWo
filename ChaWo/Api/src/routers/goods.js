@@ -11,14 +11,19 @@ const {
 
 //列表页查询数据接口--左侧列表数据
 Router.get('/find', async(req, res) => {
-        let { page, size, sort } = req.query;
-        let index = (page - 1) * size
-            // mongodb查询数据库（1）
-        let data = await mongodb.Find('GoodsAll', {}, {
-            skip: index,
-            limit: size,
-            sort
-        });
+    let { page, size, sort } = req.query;
+    let index = (page - 1) * size
+        // mongodb查询数据库（1）
+    let data = await mongodb.Find('GoodsAll', {}, { skip: index, limit: size, sort });
+    res.send(formatData({
+        data
+    }))
+})
+Router.get('/', async(req, res) => {
+        let { name, sort } = req.query;
+        // let name = "大益";
+        // mongodb查询数据库（1）
+        let data = await mongodb.Find('GoodsAll', { brad_name: name }, { limit: 50 });
         res.send(formatData({
             data
         }))
@@ -49,7 +54,7 @@ Router.post('/add', async(req, res) => {
             Price,
             Juan,
             Xl,
-            brand_id
+            brand_id,
         } = req.body;
 
         let result = await mongodb.Create('GoodsAll', {
@@ -61,7 +66,7 @@ Router.post('/add', async(req, res) => {
             Price,
             Juan,
             Xl,
-            brand_id
+            brand_id,
         })
 
         if (result.insertedCount > 0) {

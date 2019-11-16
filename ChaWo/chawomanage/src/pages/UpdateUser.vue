@@ -64,6 +64,8 @@ export default {
         }
     },
     created(){
+
+        // 创建阶段获取id相对应的数据显示到视图
         console.log(this.$route);
         
     }
