@@ -2,7 +2,7 @@
     <div style="padding:20px">
     <template>
         <el-table :data="user" border style="width: 100%;margin-bottom:15px">
-            <el-table-column label="全选" > <el-checkbox v-model="checked1"></el-checkbox></el-table-column>
+            <el-table-column label="全选" type="selection" ></el-table-column>
             <el-table-column prop="id" label="序号"></el-table-column>
             <el-table-column prop="name" label="用户名"></el-table-column>
             <el-table-column prop="timer" label="添加时间"></el-table-column>
@@ -45,7 +45,7 @@ export default {
     }
 }
 </script>
-<style>
+<style> 
   .el-table .el-table-column{
       text-align: center;
   }
