@@ -31,7 +31,6 @@ Router.post('/add', async(req, res) => {
             Juan,
             Xl,
             brand_id,
-            nb
         } = req.body;
 
         let result = await mongodb.Create('GoodsAll', {
@@ -44,7 +43,6 @@ Router.post('/add', async(req, res) => {
             Juan,
             Xl,
             brand_id,
-            nb
         })
 
         if (result.insertedCount > 0) {
