@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
-
+import main from './pages/MainPage';
+import store from './store'
 import {
   Row,
   Col,
@@ -70,6 +71,7 @@ import router from './routers';
 import axios from 'axios';
 Vue.prototype.$axios = axios;
 new Vue({
+  store,
   router,//把路由注入实例
-  render: h => h(App),
+  render: h => h(App,main),
 }).$mount('#app')

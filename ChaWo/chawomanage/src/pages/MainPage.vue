@@ -1,9 +1,6 @@
 <template>
    <div id="app" class="container"> 
-     
-     <Login v-if="admin==false"> </Login>
-     <Main v-else/>
-    <!-- <el-row class="tac">
+    <el-row class="tac">
       <el-col :span="12">
         <el-menu
           router
@@ -51,9 +48,10 @@
       <el-col>
         <div class="grid-content bg-purple-dark">
           <span>首页</span>
+          <el-button type="primary" style="float:right;margin-top:5px" @click="logout">退出</el-button>
         </div>
       </el-col>
-      <el-col><div class="grid-content bg-purple-dark"></div></el-col>
+      <el-col><div class="grid-content bg-purple-dark" ></div></el-col>
     </el-row> 
 
     <main class="main-warp">
@@ -61,39 +59,84 @@
       <a></a>
       <a></a>
       <a></a>
-      
+      <!-- 显示路由组件 -->
      <router-view /> 
-    </main> -->
+    </main>
   </div> 
 </template>
 
 <script>
-import Login from "./pages/Login";
-import Main from './pages/MainPage';
+
+
 export default {
   name: 'app',
-  components:{
-    Login,
-    Main
-  }, 
-  computed:{
-       admin(){
-         let name=this.$store.state.common.user.name;
-         if(name){
-           return true
-         }else{
-           return false
-         }
-       }
-   },
-   created(){
-       console.log(this.$store.state.common.user.name)
-   },
  data(){
-    
-   return {}
+   return {
+ menu:[{
+          name: "home",
+          path: "/home",
+          text: "首页",
+          icon: "el-icon-s-home"
+        },
+        {
+          name: "login",
+          path: "/login",
+          text: "登录",
+          icon: "el-icon-menu"
+        }],
+      goodmanagement:[   {
+          name: "goodslist",
+          path: "/goodslist",
+          text: "商品列表",
+          icon: "el-icon-menu"
+        },
+       {
+          name: "goodsclassify",
+          path: "/goodsclassify",
+          text: "商品分类",
+          icon: "el-icon-menu"
+        }
+        ,
+        {
+          name: "addgood",
+          path: "/addgood",
+          text: "添加商品",
+          icon: "el-icon-menu"
+        }],
+         usermanagement:[
+           {
+          name: "userlist",
+          path: "/userlist",
+          text: "用户列表",
+          icon: "el-icon-menu"
+         }
+        ,{
+          name: "adminlist",
+          path: "/adminlist",
+          text: "管理员列表",
+          icon: "el-icon-menu"
+        },
+        
+        {
+          name: "addname",
+          path: "/addname",
+          text: "添加管理员",
+          icon: "el-icon-menu"
+        }]
+        ,
+        ordermangement:[{
+          name: "orderlist",
+          path: "/orderlist",
+          text: "订单管理",
+          icon: "el-icon-menu"
+        }
+        ]
+   }
  },
  methods: {
+   logout(){
+     this.$store.commit("logout")
+   },
       handleOpen(key, keyPath) {
         window.console.log(key, keyPath);
       },

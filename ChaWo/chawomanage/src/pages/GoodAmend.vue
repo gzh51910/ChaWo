@@ -90,8 +90,6 @@ export default {
          this.$axios.patch("http://localhost:8010/goods/update/"+`${id}`,
          {  dwd,gc_name,brad_name,ImgMin,Title,Price,Juan,Xl}
          );
-        console.log(id);
-        
             // 修改后清空输入框
             this.form.name="";
             this.form.title="";

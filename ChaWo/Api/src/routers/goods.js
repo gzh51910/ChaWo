@@ -122,13 +122,22 @@ Router.delete('/del/:id', async(req, res) => {
 })
     
 
-// 管理员查询接口
+// 查询所有管理员接口
 Router.get('/manager', async (req, res) => {
     // mongodb查询数据库（1）
     let data = await mongodb.Find('manager', {});
     res.send(formatData({
         data
     }))
+})
+
+// 查询单个管理员
+
+Router.get('/managerone/:id', async (req, res) => {
+  let { id} = req.params;
+  // mongodb查询数据库（1）
+    let data = await mongodb.Find('manager', { _id: id })
+  res.send(formatData({data}))
 })
 
 // 添加管理员
@@ -155,7 +164,7 @@ Router.post('/adduser', async (req, res) => {
     }
 })
 // 删除管理员
-Router.delete('/removeuser/:id', async (req, res) => {
+Router.delete('/removeadmin/:id', async (req, res) => {
     let {id} = req.params;
     // 查询数据库
     let result = await mongodb.Remove('manager', { _id: id});
@@ -171,46 +180,47 @@ Router.delete('/removeuser/:id', async (req, res) => {
 // 修改管理员信息
 Router.patch('/updateuser/:id', async (req, res) => {
     let { id } = req.params;
-    console.log(id);
-    
-    // 差个数据接口
-    // let {
-    //     dwd,
-    //     gc_name,
-    //     brad_name,
-    //     ImgMin,
-    //     Title,
-    //     Price,
-    //     Juan,
-    //     Xl,
-    //     brand_id,
-    //     nb
-    // } = req.body;
-    // let result = await mongodb.Update('GoodsAll', {
-    //     _id: id
-    // }, {
-    //     dwd,
-    //     gc_name,
-    //     brad_name,
-    //     ImgMin,
-    //     Title,
-    //     Price,
-    //     Juan,
-    //     Xl,
-    //     brand_id,
-    //     nb
-    // });
+    let {name,password,sex,position} = req.body;
+    let result = await mongodb.Update('manager', {
+        _id: id
+    }, {name, password, sex, position});
 
-    // if (result.modifiedCount > 0) {
-    //     res.send(formatData())
-    // } else {
-    //     res.send(formatData({
-    //         status: 0
-    //     }))
-    // }
+    if (result.modifiedCount > 0) {
+        res.send(formatData())
+    } else {
+        res.send(formatData({
+            status: 0
+        }))
+    }
 })
 
 
+// 查询所有用户
+Router.get('/userall', async (req, res) => {
+    // mongodb查询数据库（1）
+    let data = await mongodb.Find('user', {});
+    res.send(formatData({
+        data
+    }))
+})
+
+// 删除用户
+Router.delete('/removeuser/:id', async (req, res) => {
+    let {
+        id
+    } = req.params;
+    // 查询数据库
+    let result = await mongodb.Remove('user', {
+        _id: id
+    });
+    if (result.deletedCount > 0) {
+        res.send(formatData())
+    } else {
+        res.send(formatData({
+            status: 0
+        }))
+    }
+})
 
 
 

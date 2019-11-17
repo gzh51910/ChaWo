@@ -17,8 +17,8 @@
                 <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off" style="width:200px"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary">提交</el-button>
-                <el-button >重置</el-button>
+                <el-button type="primary" @click="submitForm">提交</el-button>
+                <el-button  @click="resetForm('ruleForm')">重置</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -63,9 +63,42 @@ export default {
         }
         }
     },
+    methods:{
+      async  getUserData(){
+        let {_id}=this.$route.query;
+        let {data:{data}}=await this.$axios.get("http://localhost:8010/goods/managerone/"+`${_id}`)
+        let {name,password,sex,position}=data[0];
+        this.ruleForm.name=name;
+        this.ruleForm.password=password;
+        this.ruleForm.checkPass=password;
+        this.ruleForm.sex=sex;
+        this.ruleForm.position=position;
+        },
+     submitForm(){
+         let {_id}=this.$route.query;
+         let name=this.ruleForm.name
+         let password=this.ruleForm.password
+         let checkPass=this.ruleForm.password
+         let sex=this.ruleForm.sex
+         let position=this.ruleForm.position
+         this.$axios.patch("http://localhost:8010/goods/updateuser/"+`${_id}`,{
+             name,password,sex,checkPass,position
+         }),
+        this.ruleForm.name="";
+        this.ruleForm.password="";
+        this.ruleForm.checkPass="";
+        this.ruleForm.sex="";
+        this.ruleForm.position="";
+        alert("修改成功")
+         
+     },
+     resetForm(formName) {
+        this.$refs[formName].resetFields();
+      },
+
+    },
     created(){
-        console.log(this.$route);
-        
+        this.getUserData();
     }
 }
 </script>

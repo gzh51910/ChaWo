@@ -1,19 +1,19 @@
 <template>
-      <div style="padding:20px; width:900px">
+    <div style="padding:20px;    width: 680px;">
     <template>
         <el-table :data="user" border style="width: 100%;margin-bottom:15px">
             <el-table-column label="全选" type="selection" ></el-table-column>
             <el-table-column label="序号" width="120">
                 <template slot-scope="scope" style="text-aigin:center">{{ scope.$index+1 }}</template>
             </el-table-column>
-            <el-table-column label="用户编号" width="300">
-                <template slot-scope="scope">{{ scope.row._id }}</template>
+             <el-table-column label="管理员" width="120">
+                <template slot-scope="scope">{{ scope.row.name }}</template>
             </el-table-column>
-             <el-table-column label="用户名" width="120">
-                <template slot-scope="scope">{{ scope.row.phone }}</template>
+             <el-table-column label="性别" width="120">
+                <template slot-scope="scope">{{ scope.row.sex }}</template>
             </el-table-column>
-             <el-table-column label="密码" width="120">
-                <template slot-scope="scope">{{ scope.row.password }}</template>
+             <el-table-column label="职位" width="120">
+                <template slot-scope="scope">{{ scope.row.position }}</template>
             </el-table-column>
 
             <el-table-column  label="操作"> 
@@ -25,33 +25,39 @@
         </el-table>
     </template>
     </div>
-
 </template>
 <script>
-import LoginVue from './Login.vue';
 export default {
     data(){
         return {
-            user:[],
+            checked1:"",
+            user:[]
         }
     },
     methods:{
-      async  getUserList(){
-            let {data:{data}}= await this.$axios.get("http://localhost:8010/goods/userall");
+      async  getUser(){
+            let {data:{data}}=await this.$axios.get("http://localhost:8010/goods/manager");
             this.user=data;
         },
         removeuser(id){
-            this.user=this.user.filter(item=>item._id!=id)
-            this.$axios.delete("http://localhost:8010/goods/removeuser/"+`${id}`)
+            this.user=this.user.filter(item=>item._id!=id);
+            this.$axios.delete("http://localhost:8010/goods/removeadmin/"+id)
         },
+        updateuser(id){
+            this.$router.push({path:'./updateuser',query:{_id:id}})
+        }
     },
     created(){
-        this.getUserList();
+        this.getUser(); 
     }
+    
 }
 </script>
-<style>
-    .el-table_1_column_3 {
-        width: 500px;
-    }
+<style> 
+  .el-table .el-table-column{
+      text-align: center;
+  }
+  .cell{
+      text-align: center;
+  }
 </style>

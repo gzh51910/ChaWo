@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const secretKey = 'laoxie';
+const secretKey = 'Admin';
 
 /**
  * 
@@ -7,26 +7,28 @@ const secretKey = 'laoxie';
  * @param {Number|String} expiresIn     有效期
  * @return {String}                     返回token
  */
-function create(data,expiresIn=5){
+function create(data, expiresIn = 2 * 60 * 60) {
     var token = jwt.sign(
         data,
         secretKey, // 密钥
-        {expiresIn} //有效期（单位：s）
+        {
+            expiresIn
+        } //有效期（单位：s）
     );
     return token;
 }
 
-function verify(token){
+function verify(token) {
     let result;
     try {
         var decoded = jwt.verify(token, secretKey);
-        console.log('verify:',decoded)
+        console.log('verify:', decoded)
         result = true;
-    } catch(err) {
+    } catch (err) {
         // err
         result = false;
     }
-   return result; 
+    return result;
 }
 
 module.exports = {

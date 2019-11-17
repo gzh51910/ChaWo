@@ -7,6 +7,7 @@ const { formatData } = require('../utils')
 let HomeRouter = require('./home');
 let ListRouter = require('./list');
 let GoodsRouter = require('./goods');
+let AdminRouter = require('./Adminlogin');
 
 // 跨域解决方案CORS
 Router.use((req, res, next) => {
@@ -35,6 +36,7 @@ Router.use(express.json(), express.urlencoded({ extended: false }));
 Router.use('/home', HomeRouter);
 Router.use('/list', ListRouter);
 Router.use('/goods', GoodsRouter);
+Router.use('/admin', AdminRouter);
 Router.get('/verify', (req, res) => {
     // 获取请求头上的token
     let Authorization = req.get('Authorization');
