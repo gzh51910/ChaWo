@@ -7,11 +7,8 @@ const { formatData } = require('../utils')
 let HomeRouter = require('./home');
 let ListRouter = require('./list');
 let GoodsRouter = require('./goods');
-let LoginRouter = require('./login');
-let regRouter = require('./reg');
-let userRouter = require('./user');
-let cartRouter = require('./cart');
-let managerRouter = require('./manager');
+let AdminRouter = require('./Adminlogin');
+
 // 跨域解决方案CORS
 Router.use((req, res, next) => {
     // 支持CORS跨域，只需要设置响应头
@@ -39,11 +36,7 @@ Router.use(express.json(), express.urlencoded({ extended: false }));
 Router.use('/home', HomeRouter);
 Router.use('/list', ListRouter);
 Router.use('/goods', GoodsRouter);
-Router.use('/login', LoginRouter);
-Router.use('/reg', regRouter);
-Router.use('/user', userRouter);
-Router.use('/cart', cartRouter);
-Router.use('/manager', managerRouter);
+Router.use('/admin', AdminRouter);
 Router.get('/verify', (req, res) => {
     // 获取请求头上的token
     let Authorization = req.get('Authorization');

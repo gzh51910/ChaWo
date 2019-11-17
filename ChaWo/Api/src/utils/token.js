@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const secretKey = 'chawo';
+const secretKey = 'Admin';
 
 /**
  * 

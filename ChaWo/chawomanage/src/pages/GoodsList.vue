@@ -2,7 +2,7 @@
     <div style="padding:20px">
         <el-row size="medium">
             <el-button type="success" icon="el-icon-plus" @click="addItem('./addgood')">添加</el-button>
-            <el-button type="danger" icon="el-icon-delete">删除</el-button>
+            <el-button type="danger" icon="el-icon-delete">批量删除</el-button>
             <div class="search-wrap">
             <el-input class="Input-search" placeholder="请输入商品名称" v-model="input">
             </el-input>
