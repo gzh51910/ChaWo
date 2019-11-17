@@ -36,10 +36,8 @@ export default {
 
     getters: {
         totalPrice(state) {
-            console.log(6666);
-            
-console.log(state.goodslist.reduce((prev, item) => prev + item.price * item.qty, 0));
-
+            // console.log(6666);
+            // console.log(state.goodslist.reduce((prev, item) => prev + item.price * item.qty, 0));
             return state.goodslist.reduce((prev, item) => prev + item.price * item.qty, 0);
         },
     },
@@ -50,11 +48,6 @@ console.log(state.goodslist.reduce((prev, item) => prev + item.price * item.qty,
         // state:上面的state
         // payload:触发mutation时传入的参数
         removeFromCart(state, id) {
-            // state.goodslist.forEach((item,idx)=>{
-            //     if(item.id === id){
-            //         state.goodslist.splice(idx,1)
-            //     }
-            // })
             state.goodslist = state.goodslist.filter(item => item.id != id)
         },
 
@@ -62,9 +55,11 @@ console.log(state.goodslist.reduce((prev, item) => prev + item.price * item.qty,
         // clearCart(state) {
         //     state.goodslist = []
         // },
-        clearCart() {
+        clearCart(state) {
             // state.goodslist = []
             alert("请勾选确认框")
+                // console.log(state.goodslist[1]);
+
         },
 
         // 添加到购物车

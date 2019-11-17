@@ -12,7 +12,7 @@
     <div  v-for="item in goodslist" :key="item.id" >
         <el-row :gutter="30" class="row">
         <el-col :span="3" >
-            <el-checkbox  class="c_b" v-model="item.checked" ></el-checkbox>
+            <el-checkbox  class="c_b" v-model="item.checked"></el-checkbox>
         </el-col>
          <el-col :span="5">
             <img :src="item.imgurl" />
@@ -32,7 +32,7 @@
     <div class="footer">
     <el-row :gutter="30" >
       <el-col :span="12">
-        <el-button style="margin-top:0.5rem;margin-left:10.5rem" type="danger"  size="mini" @click="clearCart">确认信息</el-button>
+        <el-button style="margin-top:0.5rem;margin-left:10.5rem" type="danger"  size="mini" @click.native="bb(goodslist)">确认信息</el-button>
       </el-col>
       <el-col :span="12" class="price" style="text-align:right; position: absolute;
     top: 18px;left:-120px;z-index:999">
@@ -66,10 +66,8 @@ export default {
                 this.goodslist.forEach(item=>{
                     item.checked = val
                 })
-
-
             }
-        }
+        },
   },
   
   methods:{
@@ -84,6 +82,17 @@ export default {
       }
     }),
     ...mapMutations(['clearCart','changeQty']),
+     bb(vv){
+       for(var i=0;i<vv.length;i++){
+//  console.log(vv[i].checked);
+          if(vv[i].checked==true){
+            alert("666");
+          }
+// console.log(result);
+
+       }
+       
+     }
   }
 };
 </script>
