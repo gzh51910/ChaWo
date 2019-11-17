@@ -16,7 +16,7 @@ Router.get('/', async(req, res) => {
     //首页查询数据接口--页面左右滑动列表
 Router.get('/list', async(req, res) => {
         // mongodb查询数据库（1）
-        let data = await mongodb.Find('首页（左右滑动列表）', {});
+        let data = await mongodb.Find('首页（左右滑动列表）', {}, { limit: 60 });
         res.send(formatData({ data }))
     })
     //首页查询数据接口--页面推荐上下滑动列表

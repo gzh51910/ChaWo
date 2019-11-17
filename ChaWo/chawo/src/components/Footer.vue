@@ -56,7 +56,7 @@ export default {
     z-index :100;
     left :0;
     right :0;
-    bottom:1px;
+    bottom:0;
     background-color:#fff;
     width:100%;
     height:60px;

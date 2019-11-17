@@ -80,20 +80,18 @@ export default {
       submitForm(){
           this.$refs.regForm.validate(async (valid) => {
             if (valid) {
-                // 校验成功发起ajax请求
-                console.log('success');
-
+               
                 let {phone,password} = this.regForm;
                  let {data} = await my.post('/reg',{
                     phone,
                     password
                 });
-                console.log(data)
+             
                 if(data.status === 1){
                     this.$router.replace('/login')
                 }
             } else {
-                console.log('error submit!!');
+            
                 return false;
             }
         });

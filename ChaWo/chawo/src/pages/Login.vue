@@ -84,11 +84,11 @@ export default {
                     user.Authorization = headers.authorization
                     this.$store.commit('login',user)
                     let redirectUrl = this.$route.query.redirectUrl || '/mine';
-                    console.log('redirectUrl:',redirectUrl)
+
                     this.$router.push(redirectUrl)
                 }
             } else {
-                console.log('error submit!!');
+               
                 return false;
             }
         });

@@ -56,17 +56,13 @@ Vue.use(FormItem);
 Vue.use(Form);
 Vue.use(Checkbox);
 Vue.use(pageHeader);
-// import axios from 'axios';
+
 
 
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false
 
-// 使用ElementUI
-// Vue.use(ElementUI);
-// Vue.prototype.$axios = axios;
 new Vue({
-    // 4.把router实例注入到vue实例中
     router,
     store,
     render: h => h(App),

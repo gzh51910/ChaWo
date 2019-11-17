@@ -14,7 +14,7 @@
             src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
             
             ></el-avatar>
-            <p style="color:#fff;text-align:center;"></p>
+            <p style="color:#fff;text-align:center;">{{user}}</p>
         </div>
          <div style="background:rgba(117, 97, 113, 0.541);width:100%;height:60px;position:absolute;bottom:0">
             <ul style="float:left" class="shoucang">
@@ -93,13 +93,13 @@
       </ul>
     </div>
     <div style="margin-top:10px">
-      <el-breadcrumb style="height:24px;background:#fff">
+      <el-breadcrumb style="height:40px;background:#fff;padding-top:10px">
         <el-breadcrumb-item>
           <i class="el-icon-map-location" style="margin-left:10px"></i> 收货地址管理
         </el-breadcrumb-item>
         <i class="el-icon-arrow-right" style="float:right;margin-right:10px"></i>
       </el-breadcrumb>
-      <el-breadcrumb style="height:24px;background:#fff">
+      <el-breadcrumb style="height:40px;background:#fff;padding-top:10px" @click.native="goto('/logout')">
         <el-breadcrumb-item>
           <i class="el-icon-s-tools" style="margin-left:10px"></i>用户设置
         </el-breadcrumb-item>
@@ -107,15 +107,12 @@
       </el-breadcrumb>
     </div>
     <div style="margin-top:10px;background:#fff;height:106px;">
-      <div style="margin-top:10px;">
-        <span>个人中心</span>
-        <el-divider direction="vertical"></el-divider>
-        <span>注销</span>
-        <el-divider direction="vertical"></el-divider>
-        <span>反馈</span>
-        <el-divider direction="vertical"></el-divider>
-        <span>返回顶部</span>
-      </div>
+      <ul class="lmenu" style="margin-top:10px;">
+        <li>个人中心</li>
+        <li>注销</li>
+        <li>反馈</li>
+        <li>返回顶部</li>
+      </ul>
       <ul style="margin-top:10px;float:left" class="diansan">
         <li style="margin-left:100px;float:left">
           <el-button icon="el-icon-mobile-phone" circle></el-button>
@@ -130,10 +127,21 @@
 </template>
 <script>
 import Footer from '../components/Footer';
+import {mapMutations} from 'vuex';
 export default {
-        components:{
-            Footer
+      components:{
+          Footer
+      },
+      computed:{
+          user(){
+           return this.$store.state.common.user._id;
+          }
+      },
+      methods:{
+        goto(path){
+          this.$router.push(path)
         }
+      }
 };
 </script>
 <style>
@@ -154,9 +162,19 @@ a {
   font-size: 9px;
   text-align: center;
 }
+
 .dingdan {
   width: 100%;
    
 }
-
+.lmenu li{
+  float: left;
+  border-right: 1px solid #ccc;
+  /* padding: 0 10px; */
+  width: 25%;
+  text-align: center
+}
+.lmenu li:nth-last-child{
+  border-right: 0;
+}
 </style>

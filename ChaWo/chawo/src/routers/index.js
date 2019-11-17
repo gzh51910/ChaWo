@@ -11,6 +11,7 @@ import Type from '../pages/Type.vue';
 import Cart from '../pages/Cart.vue';
 import Mine from '../pages/Mine.vue';
 import Login from '../pages/Login.vue';
+import Logout from '../pages/logout.vue';
 import Reg from '../pages/Reg.vue';
 import Gooddetail from '../pages/gooddetali.vue';
 import NotFound from '../pages/NotFound.vue';
@@ -54,6 +55,12 @@ const router = new VueRouter({
             component: Login
         },
         {
+            name: 'logout',
+            path: '/logout',
+            component: Logout,
+            meta: { requiresAuth: true }
+        },
+        {
             name: 'mine',
             path: '/mine',
             component: Mine,
@@ -63,7 +70,7 @@ const router = new VueRouter({
             name: 'cart',
             path: '/cart',
             component: Cart,
-            // meta: { requiresAuth: true }
+            meta: { requiresAuth: true }
         },
         {
             name: '404',
@@ -75,42 +82,39 @@ const router = new VueRouter({
 
 // 全局路由守卫
 router.beforeEach((to, from, next) => {
-        if (to.meta.requiresAuth) {
-            // 获取token
-            // let Authorization = localStorage.getItem('Authorization');
-            let $store = router.app.$store
-            let Authorization = $store.state.common.user.Authorization;
-            if (Authorization) {
-                // 登录则放行
-                next();
+    if (to.meta.requiresAuth) {
 
-                // 发送校验请求
-                router.app.$axios.get('http://localhost:8010/verify', {
-                    headers: Authorization
-                }).then(({ data }) => {
-                    if (data.status === 0) {
-                        $store.commit('logout');
-                        next({
-                            path: '/login',
-                            query: {
-                                redirectUrl: to.fullPath
-                            }
-                        })
-                    }
-                })
-            } else {
-                // 否则跳到登录页面
-                // router.push('/login')
-                next({
-                    path: '/login',
-                    query: {
-                        redirectUrl: to.fullPath
-                    }
-                })
-            }
-        } else {
+        let $store = router.app.$store
+        let Authorization = $store.state.common.user.Authorization;
+        if (Authorization) {
+
             next();
+
+            router.app.$axios.get('http://localhost:8010/verify', {
+                headers: Authorization
+            }).then(({ data }) => {
+                if (data.status === 0) {
+                    $store.commit('logout');
+                    next({
+                        path: '/login',
+                        query: {
+                            redirectUrl: to.fullPath
+                        }
+                    })
+                }
+            })
+        } else {
+
+            next({
+                path: '/login',
+                query: {
+                    redirectUrl: to.fullPath
+                }
+            })
         }
-    })
-    // 4.导出router实例，并把router实例注入到vue实例中
+    } else {
+        next();
+    }
+})
+
 export default router;
