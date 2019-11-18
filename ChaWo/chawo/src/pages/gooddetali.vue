@@ -54,18 +54,6 @@
           <span style="float: right; margin-top:-20px;color:#ccc">@*** 2019-11-15</span>
           <span class="demonstration">好评</span>
         </div>
-        <hr />
-        <div class="block" style="margin:10px">
-          <el-rate v-model="value1"></el-rate>
-          <span style="float: right; margin-top:-20px;color:#ccc">公*** 2019-11-14</span>
-          <span class="demonstration">好评</span>
-        </div>
-        <hr />
-        <div class="block" style="margin:10px">
-          <el-rate v-model="value1"></el-rate>
-          <span style="float: right; margin-top:-20px;color:#ccc">da*** 2019-11-14</span>
-          <span class="demonstration">好评</span>
-        </div>
       </div>
     </main>
     <footer style="background-color:#eee;position:fixed;bottom:0;height:50px;width:100%">
@@ -75,7 +63,12 @@
         </li>
         <li><i class="el-icon-star-off" style="font-size:16px"></i>收藏</li>
         <li><i class="el-icon-service"></i>客服</li>
-        <li @click="go('/cart')"><i class="el-icon-shopping-cart-2"></i>购物车</li>
+        <li @click="go('/cart')">
+          <el-badge :value="length" class="item">
+            <i class="el-icon-shopping-cart-2"></i>
+            购物车
+          </el-badge>
+        </li>
         <li @click="buynow"><el-button type="warning" size="mini" style="height: 50px;">立即购买</el-button></li>
         <li @click="add2cart"><el-button type="danger" size="small" style="height: 50px;">加入购物车</el-button></li>
       </ul>
@@ -96,10 +89,12 @@ export default {
   computed:{
       uid(){
           return this.$store.state.common.user._id;
+      },
+      length(){
+        return this.$store.state.cart.goodslist.length;
       }
   },
   created() {
-    console.log(this.$route.query.val);
     this.goods = this.$route.query.val;
   },
   methods: {
@@ -168,7 +163,7 @@ img {
   float: left;
   line-height: 50px;
   font-size: 12px;
-  margin: 0  0 0 1.2%;
+  margin: 0  0 0 0.5%;
 }
 
 /* .flist li:nth-child(6){

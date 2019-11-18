@@ -12,7 +12,7 @@
           <i class="el-icon-search"></i>
           <span class="search-input" id="keyword" placeholder="大益">大益</span>
         </a>
-        <i class="el-icon-plus" style="right:8px;top:8px; position:absolute; z-index:100"></i>
+        <i class="el-icon-more" style="right:8px;top:8px; position:absolute; z-index:100"></i>
       </div>
       <el-carousel height="200px" arrow="never" indicator-position="none">
         <el-carousel-item v-for="item in image" :key="item.image">
@@ -96,10 +96,10 @@
         <img
           src="http://www.chawo.com/data/upload/mobile/special/s0/s0_06227404716647644.jpg"
           alt
-          width="374px"
+          width="100%"
         />
       </a>
-      <div class="foot">
+      <div class="foot" style="padding:0 0 0 10px">
         <span>个人中心</span>
         <el-divider direction="vertical"></el-divider>
         <span>注销</span>

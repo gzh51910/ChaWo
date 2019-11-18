@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="height:100%">
         <header style="background-color:#eee;padding:0 10px;height: 40px;position:fixed;top:0;left:0;width:100%;z-index:100">
             <div>
                 <i class="el-icon-arrow-left" style="margin:3% 0 0 4%" @click="goto('/home')"></i>
@@ -9,15 +9,15 @@
             </div>
         </header>
         <main style="margin-top:35px;height:100%">
-            <aside class="bg-purple" style="background-color:#eee;width:25%;float:left;position:fixed">
-                <a class="guide" @click="go(0)">
-                    <span style="width:40px;height:40px">
+            <aside class="bg-purple" style="background-color:#eee;padding-top:10px;height:100%;width:25%;float:left;position:fixed">
+                <a class="guide" @click="go(0)" style="width:100%;">
+                    <span style="width:30px;height:30px">
                         <i class="el-icon-star-off"></i>
                     </span>
                     <span>品牌推荐</span>
                 </a>
-                <a v-for="(item,idx) in Llist" :key="item.gc_id" class="guide" @click="go(idx+1)">
-                    <span style="width:40px;height:40px">
+                <a v-for="(item,idx) in Llist" :key="item.gc_id" class="guide" @click="go(idx+1)" style="width:100%;height:13%">
+                    <span style="width:30px;height:30px">
                         <img :src="item.image" alt="" style="width:100%;height:100%">
                     </span>
                     <span style="margin-top:20px">
@@ -30,8 +30,8 @@
                         <dl style="width:100%;margin:0 " > 
                             <dd v-for="(item,id) in tuijian" :key="item.brand_id" style="width:30%;float:left;margin:1.5%" @click="gotolist(id)">
                                 <a>
-                                    <img :src="item.brand_pic">
-                                    <p>{{item.brand_name}}</p>
+                                    <img :src="item.brand_pic" style="width:100%">
+                                    <p style="font-size:12px">{{item.brand_name}}</p>
                                 </a>
                             </dd>
                         </dl>
@@ -113,14 +113,6 @@ export default {
                 "type_name": "白茶",
                 "path":'',
                 "image": "//www.chawo.com/data/upload/mobile/category/05727231876195798.png"
-            },
-            {
-                "gc_id": "20",
-                "gc_name": "花草茶",
-                "type_id": "26",
-                "type_name": "花草茶",
-                "path":'/eight',
-                "image": "//www.chawo.com/data/upload/mobile/category/05727231406913352.png"   
             }]
       }
     },

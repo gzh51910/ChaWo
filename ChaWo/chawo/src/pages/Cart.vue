@@ -41,6 +41,7 @@
               ></el-button>
             </el-col>
           </el-row>
+          <el-divider></el-divider>
         </div>
         <div class="footer">
           <el-row :gutter="30">
@@ -149,7 +150,6 @@ img {
   padding: 0.6rem 1rem 0.6rem 0;
   margin-left: 0.5rem;
   height: 4.5rem;
-  background: pink;
   margin-bottom: 0.5rem;
 }
 .page-cart h4 {
