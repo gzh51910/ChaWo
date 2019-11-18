@@ -47,7 +47,7 @@
       
       <el-col>
         <div class="grid-content bg-purple-dark">
-          <span>首页</span>
+          <span style="margin-left:25px">列表页</span>
           <el-button type="primary" style="float:right;margin-top:5px" @click="logout">退出</el-button>
         </div>
       </el-col>
@@ -72,7 +72,7 @@ export default {
   name: 'app',
  data(){
    return {
- menu:[{
+  menu:[{
           name: "home",
           path: "/home",
           text: "首页",
@@ -85,7 +85,7 @@ export default {
           icon: "el-icon-menu"
         }],
       goodmanagement:[   {
-          name: "goodslist",
+          name: "商品列表",
           path: "/goodslist",
           text: "商品列表",
           icon: "el-icon-menu"

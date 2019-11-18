@@ -23,103 +23,62 @@ const router = new VueRouter({
          {
              name: 'mainpage',
              path: '/mainpage',
-            component: MainPage,
+             component: MainPage,
          },
         {
             name: 'home',
             path: '/home',
             component: Home,
-            // meta: {
-            //     requiresAuth: true
-            // }
         },
-        // {
-        //     name: 'login',
-        //     path: '/login',
-        //     component: Login,
-        //         // meta: {
-        //         //     requiresAuth: true
-        //         // }
-        // },
         {
             name: 'goodslist',
             path: '/goodslist',
             component: GoodsList,
-                // meta: {
-                //     requiresAuth: true
-                // }
         },
         {
             name: 'goodsclassify',
             path: '/goodsclassify',
             component: GoodClassify,
-                // meta: {
-                //     requiresAuth: true
-                // }
         },
         {
             name: 'orderlist',
             path: '/orderlist',
             component: OrderList,
-                // meta: {
-                //     requiresAuth: true
-                // }
         },
         {
             name: 'adminlist',
             path: '/adminlist',
             component: AdminList,
-                // meta: {
-                //     requiresAuth: true
-                // }
         },
         {
             name: 'addgood',
             path: '/addgood',
             component: AddGood,
-                // meta: {
-                //     requiresAuth: true
-                // }
         },
         {
             name: 'addname',
             path: '/addname',
             component: AddName,
-                // meta: {
-                //     requiresAuth: true
-                // }
         },
         {
             name: 'goodamend',
             path: '/goodamend',
             component: GoodAmend,
-                // meta: {
-                //     requiresAuth: true
-                // }
         },
          {
              name: 'addclassify',
              path: '/addclassify',
              component: AddClassify,
-                //  meta: {
-                //      requiresAuth: true
-                //  }
          },
         {
             name: 'updateuser',
             path: '/updateuser',
             component: UpdateUser,
-                // meta: {
-                //     requiresAuth: true
-                // }
         },
          {
              name: 'userlist',
              path: '/userlist',
              component: UserList,
-                //  meta: {
-                //      requiresAuth: true
-                //  }
          },
         {
             // 重定向

@@ -6,7 +6,6 @@
              class="demo-ruleForm"
              style="padding:150px 0 0 30px"
              >
-
             <el-form-item label="用户名" prop="name">
                 <el-input v-model="ruleForm.name" style="200px" placeholder="请输入用户名"></el-input>
             </el-form-item>

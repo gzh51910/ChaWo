@@ -4,16 +4,16 @@
             <el-button type="success" icon="el-icon-plus" @click="addItem('./addgood')">添加</el-button>
             <el-button type="danger" icon="el-icon-delete">批量删除</el-button>
             <div class="search-wrap">
-            <el-input class="Input-search" placeholder="请输入商品名称" v-model="input">
+            <el-input class="Input-search" placeholder="请输入商品编号或商品名称" v-model="input">
             </el-input>
-            <el-select v-model="form.region" placeholder="请选择">
-                <el-option label="普洱茶" value="shanghai"></el-option>
-                <el-option label="红茶" value="beijing"></el-option>
-                <el-option label="绿茶" value="shanghai"></el-option>
-                <el-option label="乌龙茶" value="beijing"></el-option>
-                <el-option label="黑茶" value="shanghai"></el-option>
-                <el-option label="白茶" value="beijing"></el-option>
-                <el-option label="花草茶" value="shanghai"></el-option>
+            <el-select v-model="form.region" placeholder="请选择分类">
+                <el-option label="普洱茶" value="1"></el-option>
+                <el-option label="红茶" value="2"></el-option>
+                <el-option label="绿茶" value="3"></el-option>
+                <el-option label="乌龙茶" value="4"></el-option>
+                <el-option label="黑茶" value="5"></el-option>
+                <el-option label="白茶" value="6"></el-option>
+                <el-option label="花草茶" value="7 "></el-option>
             </el-select>
 
                 <el-button type="success" icon="el-icon-search">搜索</el-button>
@@ -83,8 +83,7 @@ export default {
             checked2:"",
             size:10,
             page:1,
-            tableData:[],//保存数据
-            // classify:["普洱茶","红茶","绿茶","乌龙茶","黑茶","白茶","花草茶"]
+            tableData:[],
              form: {
                 name: '',
                 region: '',
@@ -119,6 +118,8 @@ export default {
     },
        created() {
         this.getData();
+        
+        
     },
 
     
