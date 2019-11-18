@@ -161,4 +161,7 @@ export default {
 .el-divider {
   margin: 0;
 }
+.goods-search-list-nav{
+    background: #fff;
+}
 </style>

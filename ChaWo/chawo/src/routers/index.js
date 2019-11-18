@@ -5,17 +5,6 @@ import VueRouter from 'vue-router'
 // 2. 使用（安装）vue-router
 Vue.use(VueRouter)
 
-import Home from '../pages/Home.vue';
-import List from '../pages/List.vue';
-import Type from '../pages/Type.vue';
-import Cart from '../pages/Cart.vue';
-import Mine from '../pages/Mine.vue';
-import Login from '../pages/Login.vue';
-import Logout from '../pages/logout.vue';
-import Reg from '../pages/Reg.vue';
-import Gooddetail from '../pages/gooddetali.vue';
-import NotFound from '../pages/NotFound.vue';
-
 // 3. 实例化VueRouter并配置参数
 const router = new VueRouter({
     // mode:'history',//hash(默认)，history
@@ -23,22 +12,26 @@ const router = new VueRouter({
     routes: [{
             name: 'home',
             path: '/home',
-            component: Home
+            // component: Home
+            component: r => require.ensure([], () => r(require('@/pages/Home')), 'demo')
         },
         {
             name: 'list',
             path: '/list',
-            component: List
+            // component: List
+            component: r => require.ensure([], () => r(require('@/pages/List')), 'demo')
         },
         {
             name: 'type',
             path: '/type',
-            component: Type
+            // component: Type
+            component: r => require.ensure([], () => r(require('@/pages/Type')), 'demo')
         },
         {
             name: 'detail',
             path: '/detail',
-            component: Gooddetail,
+            // component: Gooddetail,
+            component: r => require.ensure([], () => r(require('@/pages/gooddetali')), 'demo')
         },
         {
             path: '/',
@@ -47,35 +40,41 @@ const router = new VueRouter({
         {
             name: 'reg',
             path: '/reg',
-            component: Reg
+            // component: Reg
+            component: r => require.ensure([], () => r(require('@/pages/Reg')), 'demo')
         },
         {
             name: 'login',
             path: '/login',
-            component: Login
+            // component: Login
+            component: r => require.ensure([], () => r(require('@/pages/Login')), 'demo')
         },
         {
             name: 'logout',
             path: '/logout',
-            component: Logout,
+            // component: Logout,
+            component: r => require.ensure([], () => r(require('@/pages/logout')), 'demo'),
             meta: { requiresAuth: true }
         },
         {
             name: 'mine',
             path: '/mine',
-            component: Mine,
+            // component: Mine,
+            component: r => require.ensure([], () => r(require('@/pages/Mine')), 'demo'),
             meta: { requiresAuth: true }
         },
         {
             name: 'cart',
             path: '/cart',
-            component: Cart,
+            // component: Cart,
+            component: r => require.ensure([], () => r(require('@/pages/Cart')), 'demo'),
             meta: { requiresAuth: true }
         },
         {
             name: '404',
             path: '*',
-            component: NotFound
+            component: r => require.ensure([], () => r(require('@/pages/NotFound')), 'demo'),
+            // component: NotFound
         }
     ]
 });
