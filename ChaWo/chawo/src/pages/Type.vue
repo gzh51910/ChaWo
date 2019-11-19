@@ -2,7 +2,7 @@
     <div style="height:100%">
         <header style="background-color:#eee;padding:0 10px;height: 40px;position:fixed;top:0;left:0;width:100%;z-index:100">
             <div>
-                <i class="el-icon-arrow-left" style="margin:3% 0 0 4%" @click="goto('/home')"></i>
+                <i class="el-icon-arrow-left" style="margin:3% 0 0 4%" @click="goto('/homes')"></i>
                 <img src="http://www.chawo.com/wap/images/chawo-logo.png" style="height: 18px;margin-top: 2%;padding-left: 5px; width: 47.38px !important; ">
                 <a class="hinp"> <i class="el-icon-search"></i> <span class="search-input" id="keyword" placeholder="大益">大益</span> </a>
                 <i class="el-icon-more" style="right:4%;top:20%; position:absolute"></i>
@@ -123,17 +123,17 @@ export default {
         go(id){
             this.active=id;
             if(this.active==1){
-                this.$router.push({path:'/list',query:{name:'普洱茶'}});
+                this.$router.push({path:'/lists',query:{name:'普洱茶'}});
             }else if(this.active==6){
-                this.$router.push({path:'/list',query:{name:'白茶'}});
+                this.$router.push({path:'/lists',query:{name:'白茶'}});
             }
         },
         gotolist(id){
             this.active=id;
             if(this.active==1){
-                this.$router.push({path:'/list',query:{name:'大益',limit:90}});
+                this.$router.push({path:'/lists',query:{name:'大益',limit:90}});
             }else{
-                this.$router.push({path:'/list',query:{name:'中茶',limit:90}});
+                this.$router.push({path:'/lists',query:{name:'中茶',limit:90}});
             }
         }
 

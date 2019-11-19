@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="background-color:#eee;height:45%;width:100%;padding:0 10px;position:relative">
-      <i class="el-icon-arrow-left" style="margin:3% 0 0 4%" @click="go('/mine')"></i>
+      <i class="el-icon-arrow-left" style="margin:3% 0 0 4%" @click="go('/mines')"></i>
       <img
         src="http://www.chawo.com/wap/images/chawo-logo.png"
         style="height: 18px;margin-top: 1%;margin-left:20%; width: 47.38px !important; "
@@ -94,7 +94,7 @@ export default {
       // 需要跳转到登录页面
       if(this.$route.meta.requiresAuth){
         this.$router.push({
-          name:'login',
+          name:'logins',
           query:{
             redirectUrl:this.$route.fullPath
           }

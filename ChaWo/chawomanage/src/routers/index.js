@@ -18,12 +18,13 @@ import MainPage from '../pages/MainPage.vue'
 import UserList from '../pages/UserList.vue'
 // 3. 实例化VueRouter并配置参数
 const router = new VueRouter({
-    // mode:'history', //hash(默认)   history
+    mode:'history', //hash(默认)   history
     routes: [
          {
              name: 'mainpage',
              path: '/mainpage',
              component: MainPage,
+             
          },
         {
             name: 'home',
@@ -89,46 +90,5 @@ const router = new VueRouter({
     ]
 })
 
-// 全局路由守卫
-// router.beforeEach((to, from, next) => {
-//     if (to.meta.requiresAuth) {
-//         // 获取token
-//         // let Authorization = localStorage.getItem('Authorization');
-//         let $store = router.app.$store
-//         let Authorization = $store.state.common.user.Authorization;
-//         if (Authorization) {
-//             // 登录则放行
-//             next();
 
-//             // 发送校验请求
-//             router.app.$axios.get('http://10.3.136.107:8010/verify', {
-//                 headers: Authorization
-//             }).then(({
-//                 data
-//             }) => {
-//                 if (data.status === 0) {
-//                     $store.commit('logout');
-//                     next({
-//                         path: '/login',
-//                         query: {
-//                             redirectUrl: to.fullPath
-//                         }
-//                     })
-//                 }
-//             })
-//         } else {
-//             // 否则跳到登录页面
-//             // router.push('/login')
-//             next({
-//                 path: '/login',
-//                 query: {
-//                     redirectUrl: to.fullPath
-//                 }
-//             })
-//         }
-//     } else {
-//         next();
-//     }
-// })
-// 导入
 export default router;

@@ -63,7 +63,7 @@ export default {
         // 根据id获取数据
      async getDetail(){
         let id=this.$route.query.id;
-        let {data:{data}}=await this.$axios.get('http://localhost:8010/goods/findsingle/'+`${id}`)
+        let {data:{data}}=await this.$axios.get('http://121.199.11.112:8010/goods/findsingle/'+`${id}`)
         let {gc_name,brad_name,Title,Price,ImgMin,Juan,Xl}=data[0]
         this.form.name=brad_name;
         this.form.title=Title;
@@ -87,7 +87,7 @@ export default {
           let Juan=this.form.juan;
           let Xl=this.form.xl;
         //  console.log(dwd,brad_name,Title,Price,gc_name,ImgMin,Juan,Xl);
-         this.$axios.patch("http://localhost:8010/goods/update/"+`${id}`,
+         this.$axios.patch("http://121.199.11.112:8010/goods/update/"+`${id}`,
          {  dwd,gc_name,brad_name,ImgMin,Title,Price,Juan,Xl}
          );
             // 修改后清空输入框

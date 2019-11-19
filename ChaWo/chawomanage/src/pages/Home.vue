@@ -1,15 +1,18 @@
 <template>
     <div>
-        <img src="../image/chawo-logo.png" alt="">
         <div class="pic">
             <img src="../image/B28913147.jpg" alt="">
         </div>
-        <h1 class="center">Hi 欢迎使用茶窝后台管理系统</h1>
+        <h1 class="center">Hi <span>{{getName}}</span> 欢迎使用茶窝后台管理系统</h1>
     </div>
 </template>
 <script>
 export default {
-    
+     computed:{
+         getName(){
+             return this.$store.state.common.user.name
+         }
+     }
 }
 </script>
 <style>

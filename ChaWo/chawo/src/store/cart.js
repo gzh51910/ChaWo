@@ -37,7 +37,7 @@ export default {
     },
     actions: {
         async changeQtyAsync(context, { gid, qty }) {
-            await axios.patch(`http://10.3.136.108:8010/cart/update/${gid}`, { qty: qty });
+            await axios.patch(`http://121.199.11.112:8011/cart/update/${gid}`, { qty: qty });
             context.commit('changeQty', { gid, qty })
         }
     }

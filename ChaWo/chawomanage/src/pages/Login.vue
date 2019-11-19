@@ -41,14 +41,14 @@
                 // console.log('success');
 
                 let {name,password} = this.ruleForm;
-                console.log(name,password);
-                let result = await this.$axios.get('http://localhost:8010/admin',{
+                // console.log(name,password);
+                let result = await this.$axios.get('http://121.199.11.112:8010/admin',{
                 params:{
                   name,
                   password
                 }
                 });
-                console.log('result:',result);
+                // console.log('result:',result);
                 let {data,headers} = result;
                 if(data.status === 0){
                     // console.log('不行')
@@ -79,7 +79,7 @@
         height: 500px;
         margin: 0 auto;
         background: palegoldenrod;
-        border:2px solid #999;
+        /* border:2px solid red; */
         position: absolute;
         top: 50%;
         left: 50%;

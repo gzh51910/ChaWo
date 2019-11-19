@@ -16,26 +16,26 @@ export default {
       return {
           menu: [
         {
-          name: "home",
-          path: "/home",
+          name: "homes",
+          path: "/homes",
           text: "首页",
           icon: "el-icon-s-home"
         },
         {
-          name: "type",
-          path: "/type",
+          name: "types",
+          path: "/types",
           text: "分类",
           icon: "el-icon-menu"
         },
         {
-          name: "cart",
-          path: "/cart",
+          name: "carts",
+          path: "/carts",
           text: "购物车",
           icon: "el-icon-shopping-cart-2"
         },
         {
-          name: "mine",
-          path: "/mine",
+          name: "mines",
+          path: "/mines",
           text: "我的",
           icon: "el-icon-s-custom"
         }

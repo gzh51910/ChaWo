@@ -47,7 +47,7 @@ export default {
    },
    methods:{
        go(cid){
-           this.$router.replace({path:'/list',query:{name:this.name}})
+           this.$router.replace({path:'/lists',query:{name:this.name}})
        }
    }
 }

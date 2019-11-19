@@ -66,7 +66,7 @@ export default {
     methods:{
       async  getUserData(){
         let {_id}=this.$route.query;
-        let {data:{data}}=await this.$axios.get("http://localhost:8010/goods/managerone/"+`${_id}`)
+        let {data:{data}}=await this.$axios.get("http://121.199.11.112:8010/goods/managerone/"+`${_id}`)
         let {name,password,sex,position}=data[0];
         this.ruleForm.name=name;
         this.ruleForm.password=password;
@@ -81,7 +81,7 @@ export default {
          let checkPass=this.ruleForm.password
          let sex=this.ruleForm.sex
          let position=this.ruleForm.position
-         this.$axios.patch("http://localhost:8010/goods/updateuser/"+`${_id}`,{
+         this.$axios.patch("http://121.199.11.112:8010/goods/updateuser/"+`${_id}`,{
              name,password,sex,checkPass,position
          }),
         this.ruleForm.name="";

@@ -36,12 +36,12 @@ export default {
     },
     methods:{
       async  getUser(){
-            let {data:{data}}=await this.$axios.get("http://localhost:8010/goods/manager");
+            let {data:{data}}=await this.$axios.get("http://121.199.11.112:8010/goods/manager");
             this.user=data;
         },
         removeuser(id){
             this.user=this.user.filter(item=>item._id!=id);
-            this.$axios.delete("http://localhost:8010/goods/removeadmin/"+id)
+            this.$axios.delete("http://121.199.11.112:8010/goods/removeadmin/"+id)
         },
         updateuser(id){
             this.$router.push({path:'./updateuser',query:{_id:id}})

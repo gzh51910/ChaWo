@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="Lway" style="margin:20px 0">
-      <i class="el-icon-s-home" style="float:left;margin:6 10px" @click="goto('/home')"></i>
+      <i class="el-icon-s-home" style="float:left;margin:6 10px" @click="goto('/homes')"></i>
         <el-button plain icon="el-icon-mobile" style="margin-right:20%;border:0">手机登录</el-button>
         <el-button plain icon="el-icon-user" style="border:0">普通登录</el-button>
     </div>
@@ -22,7 +22,7 @@
         <el-checkbox v-model="loginForm.mdl">30天自动登录</el-checkbox>
       </el-form-item>
         <el-button type="success" @click="submitForm('numberValidateForm')" style="width:100%">登录</el-button>
-        <el-button @click="goto('./Reg')" style="width:100%;margin:10px 0 0">注册</el-button>
+        <el-button @click="goto('./Regs')" style="width:100%;margin:10px 0 0">注册</el-button>
     </el-form>
   </div>
 </template>
@@ -83,7 +83,7 @@ export default {
                     // 从响应头中获取Authorization
                     user.Authorization = headers.authorization
                     this.$store.commit('login',user)
-                    let redirectUrl = this.$route.query.redirectUrl || '/mine';
+                    let redirectUrl = this.$route.query.redirectUrl || '/mines';
 
                     this.$router.push(redirectUrl)
                 }

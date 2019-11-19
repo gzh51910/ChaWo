@@ -56,7 +56,7 @@ export default {
       },
       // 发送请求获取商品分类
      async getDataClassify(){
-        let {data:{data}} =await this.$axios.get("http://localhost:8010/goods/classify");
+        let {data:{data}} =await this.$axios.get("http://121.199.11.112:8010/goods/classify");
         this.tableData=data
       },
       // 路由跳转
@@ -66,7 +66,7 @@ export default {
     //  删除
      removeClassify(_id){
        this.tableData=this.tableData.filter(item=>item._id!=_id)
-       this.$axios.delete("http://localhost:8010/goods/removeClassify/"+_id)
+       this.$axios.delete("http://121.199.11.112:8010/goods/removeClassify/"+_id)
      }
     },
      created(){

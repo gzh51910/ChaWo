@@ -5,7 +5,7 @@
         content="购物车"
         title="返回"
         style="height: 2.0rem;padding:0.6rem 0;"
-        @click.native="go('/home')"
+        @click.native="go('/homes')"
       ></el-page-header>
       <i class="el-icon-more"></i>
     </div>
@@ -113,7 +113,7 @@ export default {
       this.$router.replace(path);
     },
     async removeItem(id){
-        let data=await this.$axios.delete(`http://10.3.136.108:8010/cart/del/${id}`);
+        let data=await this.$axios.delete(`http://121.199.11.112:8011/cart/del/${id}`);
         if(data.data.status==1){
           this.$store.commit("removeFromCart",id);
         }

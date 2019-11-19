@@ -32,7 +32,7 @@ export default {
         }else{
             let gc_name=this.form.name;
             let type_name=this.form.desc;
-            this.$axios.post('http://localhost:8010/goods/addclassify',{gc_name,type_name});
+            this.$axios.post('http://121.199.11.112:8010/goods/addclassify',{gc_name,type_name});
             this.form.name="";
             this.form.desc="";
             alert('添加成功')

@@ -37,12 +37,12 @@ export default {
     },
     methods:{
       async  getUserList(){
-            let {data:{data}}= await this.$axios.get("http://localhost:8010/goods/userall");
+            let {data:{data}}= await this.$axios.get("http://121.199.11.112:8010/goods/userall");
             this.user=data;
         },
         removeuser(id){
             this.user=this.user.filter(item=>item._id!=id)
-            this.$axios.delete("http://localhost:8010/goods/removeuser/"+`${id}`)
+            this.$axios.delete("http://121.199.11.112:8010/goods/removeuser/"+`${id}`)
         },
     },
     created(){

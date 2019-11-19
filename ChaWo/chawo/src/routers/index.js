@@ -7,65 +7,65 @@ Vue.use(VueRouter)
 
 // 3. 实例化VueRouter并配置参数
 const router = new VueRouter({
-    // mode:'history',//hash(默认)，history
+    mode: 'history', //hash(默认)，history
     // 配置参数
     routes: [{
-            name: 'home',
-            path: '/home',
+            name: 'homes',
+            path: '/homes',
             // component: Home
             component: r => require.ensure([], () => r(require('@/pages/Home')), 'demo')
         },
         {
-            name: 'list',
-            path: '/list',
+            name: 'lists',
+            path: '/lists',
             // component: List
             component: r => require.ensure([], () => r(require('@/pages/List')), 'demo')
         },
         {
-            name: 'type',
-            path: '/type',
+            name: 'types',
+            path: '/types',
             // component: Type
             component: r => require.ensure([], () => r(require('@/pages/Type')), 'demo')
         },
         {
-            name: 'detail',
-            path: '/detail',
+            name: 'details',
+            path: '/details',
             // component: Gooddetail,
             component: r => require.ensure([], () => r(require('@/pages/gooddetali')), 'demo')
         },
         {
             path: '/',
-            redirect: '/home',
+            redirect: '/homes',
         },
         {
-            name: 'reg',
-            path: '/reg',
+            name: 'regs',
+            path: '/regs',
             // component: Reg
             component: r => require.ensure([], () => r(require('@/pages/Reg')), 'demo')
         },
         {
-            name: 'login',
-            path: '/login',
+            name: 'logins',
+            path: '/logins',
             // component: Login
             component: r => require.ensure([], () => r(require('@/pages/Login')), 'demo')
         },
         {
-            name: 'logout',
-            path: '/logout',
+            name: 'logouts',
+            path: '/logouts',
             // component: Logout,
             component: r => require.ensure([], () => r(require('@/pages/logout')), 'demo'),
             meta: { requiresAuth: true }
         },
         {
-            name: 'mine',
-            path: '/mine',
+            name: 'mines',
+            path: '/mines',
             // component: Mine,
             component: r => require.ensure([], () => r(require('@/pages/Mine')), 'demo'),
             meta: { requiresAuth: true }
         },
         {
-            name: 'cart',
-            path: '/cart',
+            name: 'carts',
+            path: '/carts',
             // component: Cart,
             component: r => require.ensure([], () => r(require('@/pages/Cart')), 'demo'),
             meta: { requiresAuth: true }
@@ -89,13 +89,13 @@ router.beforeEach((to, from, next) => {
 
             next();
 
-            router.app.$axios.get('http://localhost:8010/verify', {
+            router.app.$axios.get('http://121.199.11.112:8011/verify', {
                 headers: Authorization
             }).then(({ data }) => {
                 if (data.status === 0) {
                     $store.commit('logout');
                     next({
-                        path: '/login',
+                        path: '/logins',
                         query: {
                             redirectUrl: to.fullPath
                         }
@@ -105,7 +105,7 @@ router.beforeEach((to, from, next) => {
         } else {
 
             next({
-                path: '/login',
+                path: '/logins',
                 query: {
                     redirectUrl: to.fullPath
                 }

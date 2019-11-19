@@ -47,7 +47,11 @@
       
       <el-col>
         <div class="grid-content bg-purple-dark">
-          <span style="margin-left:25px">列表页</span>
+          <span style="margin-left:25px;color:#999">尊敬的&nbsp;<strong>{{getName}} </strong>
+              <span v-if="getSex=='男'" >先生</span> 
+              <span v-else>女士</span>
+              欢迎登录茶窝网后台管理系统
+            </span>
           <el-button type="primary" style="float:right;margin-top:5px" @click="logout">退出</el-button>
         </div>
       </el-col>
@@ -143,7 +147,16 @@ export default {
       handleClose(key, keyPath) {
         window.console.log(key, keyPath);
       }
+    },
+  computed:{
+    getName(){
+      return this.$store.state.common.user.name
+    },
+    getSex(){
+      
+      return this.$store.state.common.user.sex
     }
+  }
 }
 </script>
 

@@ -72,7 +72,7 @@ export default {
             let password=this.ruleForm.checkPass;
             let sex=this.ruleForm.sex
             let position=this.ruleForm.position
-            this.$axios.post("http://localhost:8010/goods/adduser",{
+            this.$axios.post("http://121.199.11.112:8010/goods/adduser",{
               name,password,sex,position
             })
             // 清空输入框

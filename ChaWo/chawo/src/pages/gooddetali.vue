@@ -4,7 +4,7 @@
       style="background-color:#eee;position: fixed;top: 0;z-index: 999;width:100%;height:50px"
     >
       <div style="height:45%;width:100%;padding:0 10px;">
-        <i class="el-icon-arrow-left" style="margin:3% 0 0 4%" @click="go('/type')"></i>
+        <i class="el-icon-arrow-left" style="margin:3% 0 0 4%" @click="go('/types')"></i>
         <img
           src="http://www.chawo.com/wap/images/chawo-logo.png"
           style="height: 18px;margin-top: 2%;padding-left: 5px; width: 47.38px !important; "
@@ -58,12 +58,12 @@
     </main>
     <footer style="background-color:#eee;position:fixed;bottom:0;height:50px;width:100%">
       <ul class="flist">
-        <li @click="go('/home')">
+        <li @click="go('/homes')">
           <i class="el-icon-house" ></i>首页
         </li>
         <li><i class="el-icon-star-off" style="font-size:16px"></i>收藏</li>
         <li><i class="el-icon-service"></i>客服</li>
-        <li @click="go('/cart')">
+        <li @click="go('/carts')">
           <el-badge :value="length" class="item">
             <i class="el-icon-shopping-cart-2"></i>
             购物车
@@ -115,7 +115,7 @@ export default {
             // let qty=current.qty+1;
             let id=current.gid;
           this.$store.commit('changeQty',{gid,qty:current.qty+1})
-          await this.$axios.patch(`http://10.3.136.108:8010/cart/update/${id}`,{qty:current.qty+1})
+          await this.$axios.patch(`http://121.199.11.112:8011/cart/update/${id}`,{qty:current.qty+1})
         }else{
             let data=await my.post('/cart/add',{uid,
             gid,
@@ -132,7 +132,7 @@ export default {
       buynow(){
         this.add2cart();
         // 并跳转到购物车
-        this.$router.push('/cart');
+        this.$router.replace('/carts');
       }
   }
 };

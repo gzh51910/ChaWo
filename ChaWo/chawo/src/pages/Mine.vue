@@ -99,10 +99,11 @@
         </el-breadcrumb-item>
         <i class="el-icon-arrow-right" style="float:right;margin-right:10px"></i>
       </el-breadcrumb>
-      <el-breadcrumb style="height:40px;background:#fff;padding-top:10px" @click.native="goto('/logout')">
+      <el-breadcrumb style="height:40px;background:#fff;padding-top:10px" @click.native="goto('/logouts')">
         <el-breadcrumb-item>
-          <i class="el-icon-s-tools" style="margin-left:10px"></i>用户设置
+          <i class="el-icon-s-tools" style="margin-left:10px"></i>用户退出
         </el-breadcrumb-item>
+        
         <i class="el-icon-arrow-right" style="float:right;margin-right:10px"></i>
       </el-breadcrumb>
     </div>

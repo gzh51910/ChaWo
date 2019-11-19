@@ -79,7 +79,7 @@ export default {
                     let ImgMin=this.form.url;
                     let Juan=this.form.juan;
                     let Xl=this.form.xl;
-                    this.$axios.post("http://localhost:8010/goods/add",
+                    this.$axios.post("http://121.199.11.112:8010/goods/add",
                     {  dwd,gc_name,brad_name,ImgMin,Title,Price,Juan,Xl}
                     );
                     this.form.name="";

@@ -93,7 +93,7 @@ export default {
      methods: {
         //  发送请求获取数据
         async  getData(){
-            let {data:{data}}= await this.$axios.get("http://localhost:8010/goods/find"+`?page=${this.page}+&size=${this.size}`);
+            let {data:{data}}= await this.$axios.get("http://121.199.11.112:8010/goods/find"+`?page=${this.page}+&size=${this.size}`);
             this.tableData=data;
             },
             addItem(path){
@@ -105,7 +105,7 @@ export default {
             removeItem(id){
                 window.console.log(id)
                 this.tableData=this.tableData.filter(item=>item._id!=id);
-                this.$axios.delete("http://localhost:8010/goods/del/"+id)
+                this.$axios.delete("http://121.199.11.112:8010/goods/del/"+id)
             },
             handleSizeChange(val) {
             window.console.log(`每页 ${val} 条`);

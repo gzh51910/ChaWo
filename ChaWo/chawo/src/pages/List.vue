@@ -2,7 +2,7 @@
   <div>
     <header style="height: 100px;position:fixed;top:0;left:0;width:100%;z-index:100">
       <div style="background-color:#eee;height:45%;width:100%;padding:0 10px;">
-        <i class="el-icon-arrow-left" style="margin:3% 0 0 4%" @click="go('/type')"></i>
+        <i class="el-icon-arrow-left" style="margin:3% 0 0 4%" @click="go('/types')"></i>
         <img
           src="http://www.chawo.com/wap/images/chawo-logo.png"
           style="height: 18px;margin-top: 2%;padding-left: 5px; width: 47.38px !important; "
@@ -127,7 +127,7 @@ export default {
       this.$router.push(path);
     },
     godetail(val) {
-      this.$router.push({ path: "/detail", query: { val } });
+      this.$router.push({ path: "/details", query: { val } });
     }
   }
 };

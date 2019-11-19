@@ -229,7 +229,7 @@ export default {
     };
   },
   async created() {
-    let data = await my.get("http://localhost:8010/home");
+    let data = await my.get("/home");
     let d = data.data.data;
     this.list = d[1].item;
     let arr = [];

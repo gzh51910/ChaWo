@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <p style="height:40px;line-height:40px;text-align:center"><i class="el-icon-s-home" style="float:left;margin-top:8px" @click="goto('/home')"></i>注册茶窝会员<el-button plain @click="goto('/login')" style="border:0;float:right;color:red">登录</el-button></p>
+    <p style="height:40px;line-height:40px;text-align:center"><i class="el-icon-s-home" style="float:left;margin-top:8px" @click="goto('/homes')"></i>注册茶窝会员<el-button plain @click="goto('/logins')" style="border:0;float:right;color:red">登录</el-button></p>
     <el-form  ref="regForm" :rules="rules" :model="regForm"> 
       <el-form-item  prop="phone" style="border:1px solid #ccc">
         <span style="width:25%;padding-left:20px">手机号</span>
@@ -88,7 +88,7 @@ export default {
                 });
              
                 if(data.status === 1){
-                    this.$router.replace('/login')
+                    this.$router.replace('/logins')
                 }
             } else {
             
